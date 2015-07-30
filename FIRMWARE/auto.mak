@@ -4,7 +4,7 @@ TFPT = "$(ProgramFiles)\Microsoft Team Foundation Server 2010 Power Tools\tfpt.e
 appserverc = $(firstword $(shell cmd /C sort /R appserverc.txt))
 synccmd = $(TF) get . /recursive /noprompt /overwrite
 modcmd = gnumake proj=FFAP MODULES
-out_dir := C:\FF_Auto_Builds\FromReleaseBranch\FromRelease2
+out_dir := C:\FF_Auto_Builds\FromReleasesBranch\FromRelease2
 buildname = C$(appserverc)
 uniqroot = C:\tfsbuildR\SVIFF\Release2
 OFFroot = $(uniqroot)\FIRMWARE

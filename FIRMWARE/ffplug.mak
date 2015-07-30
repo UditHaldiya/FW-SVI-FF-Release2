@@ -36,7 +36,7 @@ FFP_MNS_OFFICIAL_BNAME1=FFFP_$(OFFDir)_$(OFFver)_$(FFP_FW_VERID1)_$(FFP_FW_CRCID
 define VC_PLUGIN
     -$(MN_RM) -f -r $(SISTER_OFFroot)
     @echo Now getting FFP
-    $(OFFVCS) workfold /map "$$/$(TFSProject)/FD-SW" $(SISTER_OFFroot) /workspace:$(OFFworkspace) $(OFFlogin)
+    $(OFFVCS) workfold /map "$$/$(TFSProject)/Release2/FD-SW" $(SISTER_OFFroot) /workspace:$(OFFworkspace) $(OFFlogin)
     $(PAUSE)
     echo %TIME% Sync FF >> $(PROJDIR)\buildtime.log
     $(OFFVCS) get $(SISTER_OFFroot);$(OFFver) /recursive /force $(OFFlogin)
