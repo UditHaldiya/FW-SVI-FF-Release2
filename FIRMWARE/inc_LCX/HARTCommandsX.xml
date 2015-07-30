@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--    $Archive: /MNCB/Dev/AP_Release_3.1.x/FIRMWARE/inc_SVI2AP/HARTCommandsX.xml $
+    $Date: 6/13/11 6:35p $
+    $Revision: 3 $
+    $Author: Sergey Kruss $
+
+-->
+<HART Title="SVI2 AP HART 6 Commands Definition (Addition)" Version="3.0">
+  <Commands>
+    <!--Sample commands; params are ordered-->
+  </Commands>
+  <Include>
+    <NonFileName>..\interface\hart\commonxml\NewCmdofHart6.xml</NonFileName>
+    <FileName>..\interface\hart\commonxml\command_000_Read_UniqueIdentifier.xml</FileName>
+  </Include>
+</HART>
