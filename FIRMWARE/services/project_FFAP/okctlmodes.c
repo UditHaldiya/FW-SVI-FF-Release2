@@ -102,9 +102,9 @@ CONST_ASSERT(MAX_SHED_TIME < INT32_MAX);
 static const DigitalSpConf_t DigitalSpConf_Default =
 {
     .FixedSetpoint = INT_PERCENT_OF_RANGE(-20.0), //stay closed
-    .ShedTime = MAX_SHED_TIME,
-    .InitTime = MAX_SHED_TIME,
-    .IsTargetToManual = true, // On SP loss go to manual
+    .ShedTime = TICKS_FROM_SHEDTIME_SEC(3.0),
+    .InitTime = TICKS_FROM_SHEDTIME_SEC(25.0),
+    .IsTargetToManual = false, // On SP loss go to manual
     .sp_option = SSO_current_position,
     .CheckWord = 0, //don't care
 };
