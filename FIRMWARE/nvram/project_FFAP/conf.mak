@@ -9,5 +9,5 @@ endif
 
 #Embedded NVMEM layout translation
 SOURCE+=nvram_xtable.c \
- FFAP_verdump_8.c FFAP_verdump_9.c FFAP_xlate_8_9.c
+ FFAP_verdump_8.c
 

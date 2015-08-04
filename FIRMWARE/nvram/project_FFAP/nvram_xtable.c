@@ -18,9 +18,9 @@ demand.
 */
 #include "mnwrap.h"
 #include "evertran.h"
-#include "FFAP_xlate_8_9.h"
+#include "FFAP_verdump_8.h"
 
-const xlatef_t xTable[] =
+const xlatef_t xTable[MNCB_VERSION_NUMBER+1U] =
 {
     [0] = //not supported
     {
@@ -80,17 +80,10 @@ const xlatef_t xTable[] =
     },
     [8] =
     {
-        .xup = FFAP_xlateup_8_9, //supported up but no "up" version yet
+        .xup = NULL, //supported up but no "up" version yet
         .xdown = NULL,
         .num_entries = FFAP_NVRAM_ENTRIES_VER_8,
         .map = FFAP_nvram_map_8,
-    },
-    [9] =
-    {
-        .xup = NULL, //supported up but no "up" version yet
-        .xdown = FFAP_xlatedn_9_8,
-        .num_entries = FFAP_NVRAM_ENTRIES_VER_9,
-        .map = FFAP_nvram_map_9,
     },
 };
 

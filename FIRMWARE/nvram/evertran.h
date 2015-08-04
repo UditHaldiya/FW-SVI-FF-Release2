@@ -22,6 +22,7 @@ demand.
 #include "verdump_types.h"
 #include "vertranpub.h"
 #include "dimensions.h"
+#include "mncbdefs.h"
 
 typedef ErrorCode_t xlateUp_t(const u8 *src, u8 *dst, void (*func)(void));
 typedef ErrorCode_t xlateDown_t(u8 *dst, const u8 *src, void (*func)(void));
@@ -35,7 +36,7 @@ struct xlatef_t
 };
 typedef struct xlatef_t xlatef_t;
 
-extern const xlatef_t xTable[];
+extern const xlatef_t xTable[MNCB_VERSION_NUMBER+1U];
 
 #if (NVRW_OPTIONS & NVRWOPT_USE_LEGACY_BANK) != 0
 #   define NVMEM_STD_BANK_SIZE 5000

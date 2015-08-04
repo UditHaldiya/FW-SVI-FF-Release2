@@ -366,11 +366,20 @@ procresult_t nvmem_Clone(s16 *procdetails)
     ErrorCode_t (*pvertran)(void * const *src, void **dst, u16_least srcVer, u16_least dstVer, void (*func)(void));
     const xlatef_t *pxTable;
 
+#ifdef _lint
+    if((target_layout == source_layout) || (target_layout < source_layout))
+    /* What was meant above is of course
+        if(target_layout <= source_layout)
+       Mysteriously, lint finds potential off-by-one on target_layout there
+    */
+#else
     if(target_layout <= source_layout)
+#endif
     {
         //we know how to do this
         pvertran = vertran;
         pxTable = xTable;
+        CONST_ASSERT(NELEM(xTable) > NV_LAYOUT_LEGACY);
     }
     else
     {
@@ -379,6 +388,7 @@ procresult_t nvmem_Clone(s16 *procdetails)
         pvertran = exd->vertran;
         pxTable = exd->xTable;
     }
+
     /* NOTE: Both pxTable[target_layout] and pxTable[source_layout] are valid
     by construction. Indeed,
     If target_layout <= source_layout, pxTable is of THIS flash image and is
