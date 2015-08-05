@@ -588,9 +588,9 @@ FUNCTION_BODY
     while(Appl_DeviceID == DEVICE_ID_INVALID)
     {
         ++hart_wait_count;
-        MN_RT_ASSERT(hart_wait_count < 500); //Experiment shows 33 max
+        MN_RT_ASSERT(hart_wait_count < 500); //Experiment shows 33 max without delay-on-error in hm_get_ident()
         Reset_Watchdog();
-        OS_Delay(10); //So total wait is 500*10 ms
+        OS_Delay(20); //So total wait is 500*20 ms
     }
     //uncomment for debug/measurement volatile u16 gotcha = hart_wait_count;
 

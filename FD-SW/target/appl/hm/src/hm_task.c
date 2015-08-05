@@ -514,6 +514,7 @@ static void hm_get_ident(T_HM_SCHEDULER *sched)
     else
     {
         //retrigger an error event to repeat in due time
+        OS_Delay(200); //let other pieces run
         osif_set_event (HM_TASK_ID, HART_ERROR_EVENT);
     }
 
