@@ -24,7 +24,7 @@ SOURCE:=
 LintDirArg += -estring(451, "$(TOOLDIR)\*") /*System headers standard guards */
 
 #SUBDIR, if defined,  is a space-separated list of subdirectories with sources
-SUBDIR:=includes inc_$(PROJ) sysio HAL tasks UTILITIES interface nvram \
+SUBDIR:=includes inc_$(PROJ) sysio tasks UTILITIES interface nvram \
     services framework \
     diagnostics
 
