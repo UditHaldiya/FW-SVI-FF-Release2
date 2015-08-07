@@ -122,6 +122,7 @@ static digitalsp_t digitalsp;
 bool_t mode_TransitionHook(devmode_t newmode)
 {
     bool_t can_change = true;
+#if 0
     if(newmode == MODE_OPERATE)
     {
         if(!digitalsp.isValid)
@@ -133,6 +134,7 @@ bool_t mode_TransitionHook(devmode_t newmode)
         }
     }
     if(can_change)
+#endif
     {
         //Cancel any stateful things here
         if((newmode & (MODE_MANUAL|MODE_SETUP)) != 0)
@@ -290,12 +292,13 @@ ErrorCode_t digsp_SetDigitalSetpointEx(u8 xmode, s32 sp)
     {
         if( (xmode & (xmode - 1)) == 0) //Ritchie trick: test for a single bit set
         {
-            //A wart: do not accept AUTO if find stops failed
+            //A wart no more: do not accept AUTO if find stops failed
             //A wart: do not accept AUTO if we don't have setpoint
             bool_t accept = true;
             if(xmode == IPC_MODE_AUTO)
             {
-                if(!digsp.isValid || error_IsFault(FAULT_FIND_STOPS_FAILED))
+                // no longer check for valid setpoint if(!digsp.isValid || error_IsFault(FAULT_FIND_STOPS_FAILED))
+                if(error_IsFault(FAULT_FIND_STOPS_FAILED))
                 {
                     accept = false;
                 }
