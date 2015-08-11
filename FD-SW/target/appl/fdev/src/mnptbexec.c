@@ -57,9 +57,15 @@ static void tb_PositionSp(T_FBIF_BLOCK_INSTANCE *p_block_instance, FLOAT_S *p_pr
         local_final_value.status = SQ_UNCERTAIN | SUB_INITIAL_VALUE;
     }
 
+    if((p_PTB->mode_blk.target & MODE_AUTO)!= 0U)
+    {
+        if(local_final_value.status == (SQ_UNCERTAIN|SUB_LUV)) //That's what Softing sends; FRAGILE!
+        {
+            local_final_value.status = SQ_GOOD;
+        }
+    }
     //write local_final_value to FINAL_VALUE in PTB block
-    //if ( (p_PTB->mode_blk.actual == MODE_AUTO) || (p_PTB->mode_blk.actual == MODE_OS) )
-    if ( (p_PTB->mode_blk.actual != MODE_MAN) )
+    if (p_PTB->mode_blk.actual != MODE_MAN)
     {
         p_write_loc.subindex = 0;
         p_write_loc.length   = sizeof(FLOAT_S);
