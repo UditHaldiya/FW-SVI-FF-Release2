@@ -431,9 +431,9 @@ void mnipc_ReceiveSpAndMode(const u8 *receive_buff, T_FBIF_RESB *p_resource_, T_
     p_PTB->final_position_value_dint = local_final_value_dint;
 
     if((p_PTB->mode_blk.actual != actual_mode_cmd_177) //actual mode change!
-       || ((p_PTB->mode_blk.target == MODE_AUTO) && (actual_mode_cmd_177 == MODE_MAN)))
+       || (((p_PTB->mode_blk.target & MODE_AUTO) != 0) && ((actual_mode_cmd_177 & (MODE_MAN|MODE_LO)) != 0)))
     /* EXPLANATION of the second condition:
-        In MAN, FINAL_VALUE is not updated by AO (and similar for DO friends).
+        In MAN or LO, FINAL_VALUE is not updated by AO (and similar for DO friends).
         So if its status is not GOOD, APP won't let switch to AUTO.
         We prime this stuff to get started bumplessly
     */
