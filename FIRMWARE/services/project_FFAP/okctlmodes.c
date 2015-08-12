@@ -104,7 +104,7 @@ static const DigitalSpConf_t DigitalSpConf_Default =
     .FixedSetpoint = INT_PERCENT_OF_RANGE(-20.0), //stay closed
     .ShedTime = TICKS_FROM_SHEDTIME_SEC(3.0),
     .InitTime = TICKS_FROM_SHEDTIME_SEC(25.0),
-    .IsTargetToManual = false, // On SP loss go to manual
+    .IsTargetToManual = true, // On SP loss go to manual; required for in-place reset to work
     .sp_option = SSO_current_position,
     .CheckWord = 0, //don't care
 };
