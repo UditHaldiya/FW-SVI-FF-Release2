@@ -918,6 +918,8 @@ ResetPA_5();
 
   else if (actual_mode == MODE_IMAN)
   {
+	Get_setpoint(&raw_sp, p_aofb->pv);
+
     if ((raw_sp.status & QUALITY_MASK) == SQ_GOOD_CAS) /* Retained SP */
     {
       goto AFTER_GET_SP_IN_IMAN;
