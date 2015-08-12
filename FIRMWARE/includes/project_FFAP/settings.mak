@@ -17,7 +17,7 @@ ver?=6.50
 #Lint configuration
 LINTARG=codebase.lnt
 
-MN_INSTRUM=ffprofiler
+#MN_INSTRUM=ffprofiler
 
 #Doxygen version and location
 DOXVER?=1.8.5
