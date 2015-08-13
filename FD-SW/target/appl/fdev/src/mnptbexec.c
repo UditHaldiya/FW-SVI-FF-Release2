@@ -33,7 +33,7 @@ in MAN which is a bug in its own right)
 A kludgy workaround is to ignore a few first runs of FB application
 We may want to revert this when/if Softing provides a fix
 */
-#define IGNORE_COUNT 1
+#define IGNORE_COUNT 3
 
 static void tb_PositionSp(T_FBIF_BLOCK_INSTANCE *p_block_instance, FLOAT_S *p_process_val)
 {
@@ -88,6 +88,11 @@ static void tb_PositionSp(T_FBIF_BLOCK_INSTANCE *p_block_instance, FLOAT_S *p_pr
             break;
     }
 
+    if(p_PTB->mode_blk.actual != MODE_AUTO)
+    {
+        ignore_count = IGNORE_COUNT;
+    }
+
     tb_FixupStatus(p_PTB, p_process_val);
 } //lint !e818 all helper functions must have the same prototype
 
@@ -136,6 +141,11 @@ static void tb_IntSp(T_FBIF_BLOCK_INSTANCE *p_block_instance, FLOAT_S *p_process
 
     /* write DOFBInt readback parameter */
     *(DISCRETE_S *)(void *)p_process_val = p_PTB->final_position_value_dint;
+
+    if(p_PTB->mode_blk.actual != MODE_AUTO)
+    {
+        ignore_count = IGNORE_COUNT;
+    }
 
     tb_FixupStatus(p_PTB, p_process_val);
 } //lint !e818 all helper functions must have the same prototype
@@ -191,6 +201,11 @@ static void tb_BoolSp(T_FBIF_BLOCK_INSTANCE *p_block_instance, FLOAT_S *p_proces
 
     /* write DOFBBool readback parameter */
     *(DISCRETE_S *)(void *)p_process_val = p_PTB->final_position_value_d;
+
+    if(p_PTB->mode_blk.actual != MODE_AUTO)
+    {
+        ignore_count = IGNORE_COUNT;
+    }
 
     tb_FixupStatus(p_PTB, p_process_val);
 } //lint !e818 all helper functions must have the same prototype
