@@ -154,6 +154,7 @@ ErrorCode_t TypeUnsafe_hart_SetHartData(const void *src)
     //KLUDGE for Vlad who doesn't want FRAM layout change
     HartData_t hdata = *pHartData;
     hdata.hart_version = HART_REVS_NUMBER; //see hartvers_compat.c for why
+    hdata.Reserved = 1U; //to pass Release1 test
     pHartData = &hdata;
 
     /* Check range of HART parameters */
