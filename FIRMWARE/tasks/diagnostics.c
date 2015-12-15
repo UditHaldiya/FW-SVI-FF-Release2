@@ -523,7 +523,7 @@ static procresult_t diag_Perform_StepTest_Internal(size_t fill_func(void),
       err = buffer_StartSampling(DIAGBUF_DEFAULT,
                                TASKID_CONTROL,
                                sample_pos_sp,
-                               MAX_NUM_DSAMPLES(STEPTEST_HEADERSZ),
+                               DIAG_MAX_SAMPLES,
                                STEPTEST_HEADERSZ/2U, // diag_t --> dsample_t
                                NULL);
       if(err != ERR_OK)

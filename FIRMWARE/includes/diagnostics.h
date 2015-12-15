@@ -73,9 +73,10 @@ sizeof(dsample_t)/sizeof(diag_t) times less than the number of entries
 CONST_ASSERT((sizeof(dsample_t)%sizeof(diag_t))==0U);
 #define MAX_NUM_DSAMPLES(headersz) (((((DIAGNOSTIC_BUFFER_SIZE-1U)-headersz)/DENTRIES_IN_DSAMPLE)/2U)*2U) //must be even!
 
-#define DIAG_REQUIRED_SAMPLES 1000U
-#define DIAG_MAX_SAMPLES (2U*DIAG_REQUIRED_SAMPLES)
-#define DIAGSIGN_LOGFILE_MAXSIZE MIN((DIAGNOSTIC_BUFFER_SIZE-1U)*sizeof(diag_t), (EXTDIAG_HEADERSZ*sizeof(diag_t)) + (DIAG_MAX_SAMPLES*sizeof(dsample_t)))
+#define DIAG_REQUIRED_SAMPLES 1000U //! requirement from Marketing
+#define DIAG_MAX_SAMPLES (2U*DIAG_REQUIRED_SAMPLES) //! need twice the required to account for pruning
+
+#define DIAGSIGN_LOGFILE_MAXSIZE ((EXTDIAG_HEADERSZ*sizeof(diag_t)) + (DIAG_MAX_SAMPLES*sizeof(dsample_t)))
 
 #define NUMBER_DIAGNOSTIC_BASELINES 1U
 #define NUMBER_DIAGNOSTIC_USER_CURVES 1U
