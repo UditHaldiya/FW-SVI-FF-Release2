@@ -38,7 +38,7 @@ demand.
 #MP Setstr RES_VAL_DEV_TYPE = DEVICE_TYPE
 #MP Setstr RES_DEV_MINOR_REV="1"
 #MP Setstr RES_BUILD="0"
-#MP Setstr RES_BUILD_REV="0"
+#MP Setstr RES_BUILD_REV="1"
 
 #MP ;Compatibility
 #MP Setstr SW_FF_MAJOR = RES_VAL_DEV_REV
