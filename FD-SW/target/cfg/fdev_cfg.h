@@ -127,8 +127,8 @@ DESCRIPTION
   #define RES_VAL_FAIL_MASK         0x00000000
 
 /* --- DLL busparameters -------------------------------------------------- */
-  #define DEV_ST_MIN                8
-  #define DEV_MID_MIN               6
-  #define DEV_MRD_MIN               5
+  #define DEV_ST_MIN                1
+  #define DEV_MID_MIN               1
+  #define DEV_MRD_MIN               1
 
 #endif /* __FDEV_CFG_H__ */
