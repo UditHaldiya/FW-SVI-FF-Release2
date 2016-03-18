@@ -88,7 +88,7 @@ OFFmodroot:= C:\rbuilder\Core\FIRMWARE
 #   Template workspace
 OFFworktemplate :=rbuilder;$(OFFuser)
 #   Local builder workspace
-OFFworkspace :=rbuilder_$(USERNAME)
+OFFworkspace :=rbuilder_$(USERNAME)_%COMPUTERNAME%
 #   Version control system commands
 OFFVCS:="$(ProgramFiles)\Microsoft Visual Studio 10.0\Common7\IDE\tf.exe"
 OFFTester:=Khan, Rizwan
@@ -137,7 +137,7 @@ SS : force
     $(CLEAN_PLUGIN)
 # 2. Clone the builder's abstract workspace on local machine
     echo %TIME% Prepare workspace >> $(PROJDIR)\buildtime.log
-    $(OFFVCS) workspace /new /noprompt /template:$(OFFworktemplate) $(OFFworkspace) $(OFFlogin)
+    $(OFFVCS) workspace /new /noprompt /template:$(OFFworktemplate) $(OFFworkspace) $(OFFlogin) /computer:%COMPUTERNAME%
 # 3. Map the sandbox
     $(OFFVCS) workfold /map "$(VCSroot)" $(OFFroot) /workspace:$(OFFworkspace) $(OFFlogin)
     $(OFFVCS) workfold /map $(VCSmodroot) $(OFFmodroot) /workspace:$(OFFworkspace) $(OFFlogin)
