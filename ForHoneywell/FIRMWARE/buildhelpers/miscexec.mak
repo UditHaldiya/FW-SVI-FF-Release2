@@ -79,12 +79,13 @@ OFFver :=T
 #  -- Do not change unless instructed by IT --
 #   Bogus builder user
 #OFFuser :=Corp\TFSBUILD
-OFFuser :=GENPITFI01\502098661
+#OFFuser :=GENPITFI01\502098661
+LOGON\lg098661sv
 #   Password of the bogus user
 #OFFpass:=Dresser123
 OFFpass:=Sha2118d
 #   Where modules are retrieved
-OFFmodroot:= C:\rbuilder\Core\FIRMWARE
+OFFmodroot:= C:\rbuilder\Core\FIRMWARE\ForHon
 #   Template workspace
 OFFworktemplate :=rbuilder;$(OFFuser)
 #   Local builder workspace
