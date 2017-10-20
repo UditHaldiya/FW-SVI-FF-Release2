@@ -87,7 +87,7 @@ OFFpass:=Sha2118d
 #   Where modules are retrieved
 OFFmodroot:= C:\rbuilder\Core\FIRMWARE\ForHon
 #   Template workspace
-OFFworktemplate :=rbuilder;$(OFFuser)
+OFFworktemplate :=rbuilder;GENPITFI01\502098661
 #   Local builder workspace
 OFFworkspace :=rbuilder_$(USERNAME)
 #   Version control system commands
