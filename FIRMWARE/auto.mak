@@ -6,9 +6,9 @@ synccmd = $(TF) get . /recursive /noprompt /overwrite
 modcmd = gnumake proj=FFAP MODULES
 out_dir := C:\FF_Auto_Builds\FromReleasesBranch\FromRelease2
 buildname = C$(appserverc)
-uniqroot = C:\tfsbuildR\SVIFF\Release2
+uniqroot = C:\tfsbuildR\SVIFF\Release2\ForHoneywell
 OFFroot = $(uniqroot)\FIRMWARE
-OFFmodroot = $(uniqroot)\Core\FIRMWARE
+OFFmodroot = $(uniqroot)\Core\FIRMWARE\Hon
 
 all : appserverc.txt
     @echo appserverc=$(appserverc)
