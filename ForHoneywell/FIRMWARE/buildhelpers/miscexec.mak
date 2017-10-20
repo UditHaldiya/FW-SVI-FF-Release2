@@ -80,7 +80,7 @@ OFFver :=T
 #   Bogus builder user
 #OFFuser :=Corp\TFSBUILD
 #OFFuser :=GENPITFI01\502098661
-LOGON\lg098661sv
+OFFuser :=LOGON\lg098661sv
 #   Password of the bogus user
 #OFFpass:=Dresser123
 OFFpass:=Sha2118d
