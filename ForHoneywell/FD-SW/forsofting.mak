@@ -58,7 +58,7 @@ GenVFD: tok
 
 _tok: $(pretok)
     $(FFTokenizerpath)/ff_tok32.exe $(pretok)
-ifneq ($(option),)
+ifneq ($(filter -4, $(option)),)
     $(MN_CP) $(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV).ffo $(dst)/
     $(MN_CP) $(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV).sym $(dst)/
 else
@@ -77,7 +77,7 @@ tok: $(DDLINC) $(GW_DIR)\ids.gw
     -$(MN_RM) -f -r $(SOURCE_BINARY_DD)
     -cmd /E /C mkdir $(SOURCE_BINARY_DD)
     $(MAKE) -f $(me) -C $(releasepath) _tok DDLSRC=$(DDLSRC) pretok=$(TARGET_BINARY_DD)\_tmptok-4 dst=$(TARGET_BINARY_DD) option="-a -DDD4 -4"
-    $(MAKE) -f $(me) -C $(releasepath) _tok DDLSRC=$(DDLSRC) pretok=$(TARGET_BINARY_DD)\_tmptok dst=$(TARGET_BINARY_DD) option=
+    $(MAKE) -f $(me) -C $(releasepath) _tok DDLSRC=$(DDLSRC) pretok=$(TARGET_BINARY_DD)\_tmptok dst=$(TARGET_BINARY_DD) option=-a
 
 $(DDLINC) : $(MAKEFILE_LIST)
     @echo MAKEFILE_LIST = $(MAKEFILE_LIST)
@@ -105,7 +105,7 @@ $(GW_DIR)\ids.gw : ids.gw
     $(MN_CP) $< $@
 
 Changeset:=$(if $(OFFver),$(OFFver),sandbox)
-	
+
 changeset.inc : $(MAKEFILE_LIST)
     @echo MAKEFILE_LIST = $(MAKEFILE_LIST)
     $(Hide)echo #MP Setstr Changeset="$(Changeset)" >$@
