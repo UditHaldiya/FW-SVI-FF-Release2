@@ -58,12 +58,15 @@ GenVFD: tok
 
 _tok: $(pretok)
     $(FFTokenizerpath)/ff_tok32.exe $(pretok)
+	$(pause)
 ifneq ($(filter -4, $(option)),)
     $(MN_CP) $(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV).ffo $(dst)/
     $(MN_CP) $(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV).sym $(dst)/
+    $(MN_CP) $(SOURCE_BINARY_DD)/symbols.txt $(dst)/symbols4_.txt
 else
     $(MN_CP) $(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV).ff5 $(dst)/
     $(MN_CP) $(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV).sy5 $(dst)/
+    $(MN_CP) $(SOURCE_BINARY_DD)/symbols.txt $(dst)/symbols_.txt
 endif
 
 $(pretok) : $(DDLSRC) force
@@ -75,9 +78,19 @@ tok: $(DDLINC) $(GW_DIR)\ids.gw
     $(cmpcpy) $(includepath)\standard.sym $(releasepath)\standard.sym
     -cmd /E /C mkdir $(manufacturer_ID)\$(DEVICE_TYPE)
     -$(MN_RM) -f -r $(SOURCE_BINARY_DD)
-    -cmd /E /C mkdir $(SOURCE_BINARY_DD)
+    -cmd /E /C mkdir $(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV)
+	if exist $(TARGET_BINARY_DD)/symbols4.txt $(MN_CP) -p- $(TARGET_BINARY_DD)/symbols4.txt $(SOURCE_BINARY_DD)/symbols.txt
+#	if exist $(TARGET_BINARY_DD)/$(DEVICE_REV)$(DD_REV).ffo $(MN_CP) -p- $(TARGET_BINARY_DD)/$(DEVICE_REV)$(DD_REV).ffo $(SOURCE_BINARY_DD)/
+#	if exist $(TARGET_BINARY_DD)/$(DEVICE_REV)$(DD_REV).sym $(MN_CP) -p- $(TARGET_BINARY_DD)/$(DEVICE_REV)$(DD_REV).sym $(SOURCE_BINARY_DD)/
+	$(pause)
     $(MAKE) -f $(me) -C $(releasepath) _tok DDLSRC=$(DDLSRC) pretok=$(TARGET_BINARY_DD)\_tmptok-4 dst=$(TARGET_BINARY_DD) option="-a -DDD4 -4"
+	$(pause)
+	if exist $(TARGET_BINARY_DD)/symbols.txt $(MN_CP) -p- $(TARGET_BINARY_DD)/symbols.txt $(SOURCE_BINARY_DD)/
+#	if exist $(TARGET_BINARY_DD)/$(DEVICE_REV)$(DD_REV).ff5 $(MN_CP) -p- $(TARGET_BINARY_DD)/$(DEVICE_REV)$(DD_REV).ff5 $(SOURCE_BINARY_DD)/
+#	if exist $(TARGET_BINARY_DD)/$(DEVICE_REV)$(DD_REV).sy5 $(MN_CP) -p- $(TARGET_BINARY_DD)/$(DEVICE_REV)$(DD_REV).sy5 $(SOURCE_BINARY_DD)/
+	$(pause)
     $(MAKE) -f $(me) -C $(releasepath) _tok DDLSRC=$(DDLSRC) pretok=$(TARGET_BINARY_DD)\_tmptok dst=$(TARGET_BINARY_DD) option=-a
+	$(pause)
 
 $(DDLINC) : $(MAKEFILE_LIST)
     @echo MAKEFILE_LIST = $(MAKEFILE_LIST)
