@@ -663,6 +663,18 @@ MENU mnu_actuator_b_pressure
 {
     LABEL "|en|Actuator B Pressure";
     STYLE GROUP;
+    VALIDITY
+        IF( SVI2_DBL_ACT == PARAM.ACTUATOR_3.ACT_STYLE )
+        { TRUE; }
+        ELSE
+        { FALSE; }
+#if 0
+    EDD(VISIBILITY
+        IF( 1 )
+        { TRUE; }
+        ELSE
+        { FALSE; })
+#endif
     ITEMS
     {
         PARAM.ACTUATOR_B_PRESSURE.STATUS
@@ -2061,7 +2073,7 @@ MENU mnu_tb_exconfig
         PARAM.BOOSTER.QTY
         PARAM.ACCESSORY.SOLENOID
         /* PARAM.ACCESSORY.POSITION_SENSOR_TYPE */
-        PARAM.ACCESSORY.REMOTE_SENSOR    
+        PARAM.ACCESSORY.REMOTE_SENSOR
     }
 }
 
@@ -2446,7 +2458,7 @@ MENU mnu_identification_in_device_setup
         EDD(ROWBREAK)
 
         PARAM.HARDWARE_REV
-        EDD(COLUMNBREAK)    
+        EDD(COLUMNBREAK)
         PARAM.TAG_DESC
         EDD(COLUMNBREAK)
         PARAM.SOFTWARE_REV_FF
