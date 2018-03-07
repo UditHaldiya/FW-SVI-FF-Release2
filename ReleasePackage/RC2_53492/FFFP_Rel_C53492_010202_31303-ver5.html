@@ -1,0 +1,201 @@
+<html>
+<head>
+<title>FF FFP HART Intercept Commands Definition (Names)</title></head>
+<style
+ type="text/css">
+body { margin-left: 5%;  font-family: sans-serif}
+P.breakhere {page-break-before: always}
+div.mymargin {margin-left: +5%}
+div.commands {margin-left: +2%}
+div.box { border: solid; border-width: thin; width: 70% }
+div.boxcc { border: solid; border-width: thin; width: 50% }
+</style>
+<body> 
+<br /><br /><br />
+<h1 align= "center"><a name="FF FFP HART Intercept Commands Definition" >FF FFP HART Intercept Commands Definition </a> </h1><h2 align= "center"><a name="Version 1.0" >Version 1.0 </a> </h2><br /><br /><br />
+<P CLASS="breakhere">
+<h2 align= "center"><a name="HART Command Summary" >HART Command Summary </a> </h2>
+<div class= "mymargin" >
+<dl>
+<dt><a href="#Command 255 - FFP Info">Command 255 - FFP Info </a></dt>
+<dl>
+<dt><a href="#Command 255,   2 - Manipulate IPC traffic">Command 255,   2 - Manipulate IPC traffic </a></dt>
+<dt><a href="#Command 255,   3 - Read FFP memory">Command 255,   3 - Read FFP memory </a></dt>
+<dt><a href="#Command 255,   4 - Write FFP memory">Command 255,   4 - Write FFP memory </a></dt>
+<dt><a href="#Command 255,   5 - Read FFP NVMEM header">Command 255,   5 - Read FFP NVMEM header </a></dt>
+<dt><a href="#Command 255,   6 - Read FFP NVMEM blocks directory">Command 255,   6 - Read FFP NVMEM blocks directory </a></dt>
+<dt><a href="#Command 255,   7 - Read FFP NVMEM Test Statistics">Command 255,   7 - Read FFP NVMEM Test Statistics </a></dt>
+<dt><a href="#Command 255,   8 - Test Worst EEP NVMEM Write Time">Command 255,   8 - Test Worst EEP NVMEM Write Time </a></dt>
+<dt><a href="#Command 255,   9 - Read FFP Active Flash Bank">Command 255,   9 - Read FFP Active Flash Bank </a></dt>
+<dt><a href="#Command 255,  10 - Emulate Firmware Activation">Command 255,  10 - Emulate Firmware Activation </a></dt>
+ </dl>
+ </dl>
+<P CLASS="breakhere">
+<br /><div class="box"><h2 ><a name="Command 255 - FFP Info" >Command 255 - FFP Info </a> </h2></div>
+<div class="commands" >
+<p> <b> <big> <strong> Command Type:  </strong> </big>  </b>Unknown<br /><b> <big> <strong> Allowed modes:  </strong> </big>  </b>Fail Safe, Manual, Setup, Normal<br /><b> <big> <strong> Description:  </strong> </big>  </b>This debug/instrumentation command is only valid for HART over FF and is intercepted in FFP to read/manipulate things in FFP </p></div>
+<i> <big> <h3 ><a name="Sub Commands" >Sub Commands </a> </h3></big>  </i><br /><div class="box"><h3 ><a name="Command 255,   2 - Manipulate IPC traffic" >Command 255,   2 - Manipulate IPC traffic </a> </h3></div>
+<div class="commands" >
+<p> <b> <big> <strong> Command Type:  </strong> </big>  </b>Write<br /><b> <big> <strong> Allowed modes:  </strong> </big>  </b>Fail Safe, Manual, Setup, Normal<br /><b> <big> <strong> Description:  </strong> </big>  </b> </p></div>
+
+<div class="commands" >
+<h3 ><a name="Request Data Bytes:" >Request Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="5%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 2)</td>
+<tr valign="top">
+<td>1</td><td>IPC_Mangle<br /><i> IPC_Mangle </i></td><td>uchar</td><td>&nbsp<br /></td><td>0 :: Disable Periodic Traffic<br />1 :: Enable Periodic Traffic<br /></td><td>&nbsp</td></table><br /><h3 ><a name="Response Data Bytes:" >Response Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="10%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 2)</td>
+<tr valign="top">
+<td>1</td><td>IPC_Mangle<br /><i> IPC_Mangle </i></td><td>uchar</td><td>&nbsp<br /></td><td>0 :: Disable Periodic Traffic<br />1 :: Enable Periodic Traffic<br /></td><td>&nbsp</td></table><a href= "#HART Command Summary">Go Back to Summary </a></dt></div>
+<P CLASS="breakhere">
+<br /><div class="box"><h3 ><a name="Command 255,   3 - Read FFP memory" >Command 255,   3 - Read FFP memory </a> </h3></div>
+<div class="commands" >
+<p> <b> <big> <strong> Command Type:  </strong> </big>  </b>Read<br /><b> <big> <strong> Allowed modes:  </strong> </big>  </b>Fail Safe, Manual, Setup, Normal<br /><b> <big> <strong> Description:  </strong> </big>  </b> </p></div>
+
+<div class="commands" >
+<h3 ><a name="Request Data Bytes:" >Request Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="5%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 3)</td>
+<tr valign="top">
+<td>1</td><td>FFP Memory Selection<br /><i> FFP Memory Selection </i></td><td>uchar</td><td>&nbsp<br /></td><td>0 :: FFP RAM<br />1 :: FFP NVMEM<br /></td><td>&nbsp</td>
+<tr valign="top">
+<td>2 - 5</td><td>FFP Memory address<br /><i> FFP Memory address </i></td><td>uint4</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>RAM or NVMEM</td></table><br /><h3 ><a name="Response Data Bytes:" >Response Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="10%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 3)</td>
+<tr valign="top">
+<td>1</td><td>FFP Memory Selection<br /><i> FFP Memory Selection </i></td><td>uchar</td><td>&nbsp<br /></td><td>0 :: FFP RAM<br />1 :: FFP NVMEM<br /></td><td>&nbsp</td>
+<tr valign="top">
+<td>2 - 5</td><td>FFP Memory address<br /><i> FFP Memory address </i></td><td>uint4</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>RAM or NVMEM</td>
+<tr valign="top">
+<td>6 - 29</td><td>FFP Memory Content<br /><i> FFP Memory Content </i></td><td>uchar[24]</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Memory Content to read or write</td></table><a href= "#HART Command Summary">Go Back to Summary </a></dt></div>
+<P CLASS="breakhere">
+<br /><div class="box"><h3 ><a name="Command 255,   4 - Write FFP memory" >Command 255,   4 - Write FFP memory </a> </h3></div>
+<div class="commands" >
+<p> <b> <big> <strong> Command Type:  </strong> </big>  </b>Write<br /><b> <big> <strong> Allowed modes:  </strong> </big>  </b>Fail Safe, Manual, Setup, Normal<br /><b> <big> <strong> Description:  </strong> </big>  </b> </p></div>
+
+<div class="commands" >
+<h3 ><a name="Request Data Bytes:" >Request Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="5%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 4)</td>
+<tr valign="top">
+<td>1</td><td>FFP Memory Selection<br /><i> FFP Memory Selection </i></td><td>uchar</td><td>&nbsp<br /></td><td>0 :: FFP RAM<br />1 :: FFP NVMEM<br /></td><td>&nbsp</td>
+<tr valign="top">
+<td>2 - 5</td><td>FFP Memory address<br /><i> FFP Memory address </i></td><td>uint4</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>RAM or NVMEM</td>
+<tr valign="top">
+<td>6</td><td>FFP Memory Block Length<br /><i> FFP Memory Block Length </i></td><td>uchar</td><td>&nbsp<br /></td><td>must be between 1 and 24.<br /></td><td>Actual number of bytes to write</td>
+<tr valign="top">
+<td>7 - 30</td><td>FFP Memory Content<br /><i> FFP Memory Content </i></td><td>uchar[24]</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Memory Content to read or write</td></table><br /><h3 ><a name="Response Data Bytes:" >Response Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="10%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 4)</td>
+<tr valign="top">
+<td>1</td><td>FFP Memory Selection<br /><i> FFP Memory Selection </i></td><td>uchar</td><td>&nbsp<br /></td><td>0 :: FFP RAM<br />1 :: FFP NVMEM<br /></td><td>&nbsp</td>
+<tr valign="top">
+<td>2 - 5</td><td>FFP Memory address<br /><i> FFP Memory address </i></td><td>uint4</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>RAM or NVMEM</td>
+<tr valign="top">
+<td>6</td><td>FFP Memory Block Length<br /><i> FFP Memory Block Length </i></td><td>uchar</td><td>&nbsp<br /></td><td>must be between 1 and 24.<br /></td><td>Actual number of bytes to write</td>
+<tr valign="top">
+<td>7 - 30</td><td>FFP Memory Content<br /><i> FFP Memory Content </i></td><td>uchar[24]</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Memory Content to read or write</td></table><a href= "#HART Command Summary">Go Back to Summary </a></dt></div>
+<P CLASS="breakhere">
+<br /><div class="box"><h3 ><a name="Command 255,   5 - Read FFP NVMEM header" >Command 255,   5 - Read FFP NVMEM header </a> </h3></div>
+<div class="commands" >
+<p> <b> <big> <strong> Command Type:  </strong> </big>  </b>Read<br /><b> <big> <strong> Allowed modes:  </strong> </big>  </b>Fail Safe, Manual, Setup, Normal<br /><b> <big> <strong> Description:  </strong> </big>  </b>FFP NVMEM is organized in blocks. This helper provides layout information about the blocks directory </p></div>
+
+<div class="commands" >
+<h3 ><a name="Request Data Bytes:" >Request Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="5%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 5)</td></table><br /><h3 ><a name="Response Data Bytes:" >Response Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="10%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 5)</td>
+<tr valign="top">
+<td>1</td><td>FFP NVMEM Number Of Blocks<br /><i> FFP NVMEM Number Of Blocks </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>&nbsp</td>
+<tr valign="top">
+<td>2 - 5</td><td>FFP NVMEM Size of Blocks<br /><i> FFP NVMEM Size of Blocks </i></td><td>uint4</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Total size of all blocks</td>
+<tr valign="top">
+<td>6 - 9</td><td>FFP NVMEM Blocks Base Address<br /><i> FFP NVMEM Blocks Base Address </i></td><td>uint4</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Address of blocks area</td>
+<tr valign="top">
+<td>10 - 11</td><td>FFP NVMEM Block Descriptor Size<br /><i> FFP NVMEM Block Descriptor Size </i></td><td>uint2</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Size of a block descriptor</td></table><a href= "#HART Command Summary">Go Back to Summary </a></dt></div>
+<P CLASS="breakhere">
+<br /><div class="box"><h3 ><a name="Command 255,   6 - Read FFP NVMEM blocks directory" >Command 255,   6 - Read FFP NVMEM blocks directory </a> </h3></div>
+<div class="commands" >
+<p> <b> <big> <strong> Command Type:  </strong> </big>  </b>Read<br /><b> <big> <strong> Allowed modes:  </strong> </big>  </b>Fail Safe, Manual, Setup, Normal<br /><b> <big> <strong> Description:  </strong> </big>  </b>FFP NVMEM is organized in blocks. This helper provides layout information about the block requested </p></div>
+
+<div class="commands" >
+<h3 ><a name="Request Data Bytes:" >Request Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="5%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 6)</td>
+<tr valign="top">
+<td>1</td><td>FFP NVMEM Block Selector<br /><i> FFP NVMEM Block Selector </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>A block to read/write. Must be less than number of blocks</td></table><br /><h3 ><a name="Response Data Bytes:" >Response Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="10%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 6)</td>
+<tr valign="top">
+<td>1</td><td>FFP NVMEM Block Selector<br /><i> FFP NVMEM Block Selector </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>A block to read/write. Must be less than number of blocks</td>
+<tr valign="top">
+<td>2 - 5</td><td>FFP NVMEM Blocks Base Address<br /><i> FFP NVMEM Blocks Base Address </i></td><td>uint4</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Address of blocks area</td>
+<tr valign="top">
+<td>6 - 9</td><td>FFP NVMEM Block Size<br /><i> FFP NVMEM Block Size </i></td><td>uint4</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Size in bytes of block data</td></table><a href= "#HART Command Summary">Go Back to Summary </a></dt></div>
+<P CLASS="breakhere">
+<br /><div class="box"><h3 ><a name="Command 255,   7 - Read FFP NVMEM Test Statistics" >Command 255,   7 - Read FFP NVMEM Test Statistics </a> </h3></div>
+<div class="commands" >
+<p> <b> <big> <strong> Command Type:  </strong> </big>  </b>Read<br /><b> <big> <strong> Allowed modes:  </strong> </big>  </b>Fail Safe, Manual, Setup, Normal<br /><b> <big> <strong> Description:  </strong> </big>  </b>Selftest stats </p></div>
+
+<div class="commands" >
+<h3 ><a name="Request Data Bytes:" >Request Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="5%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 7)</td></table><br /><h3 ><a name="Response Data Bytes:" >Response Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="10%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 7)</td>
+<tr valign="top">
+<td>1</td><td>FFP NVMEM Failed Block<br /><i> FFP NVMEM Failed Block </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>&nbsp</td>
+<tr valign="top">
+<td>2 - 5</td><td>FFP NVMEM Successful Repairs<br /><i> FFP NVMEM Successful Repairs </i></td><td>uint4</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>&nbsp</td>
+<tr valign="top">
+<td>6 - 9</td><td>FFP NVMEM Failed Repairs<br /><i> FFP NVMEM Failed Repairs </i></td><td>uint4</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>&nbsp</td>
+<tr valign="top">
+<td>10 - 13</td><td>FFP NVMEM max Write Time<br /><i> FFP NVMEM max Write Time </i></td><td>uint4</td><td>ms<br /></td><td>&nbsp<br /></td><td>Indicates the longest delay of NVMEM write operation</td></table><a href= "#HART Command Summary">Go Back to Summary </a></dt></div>
+<P CLASS="breakhere">
+<br /><div class="box"><h3 ><a name="Command 255,   8 - Test Worst EEP NVMEM Write Time" >Command 255,   8 - Test Worst EEP NVMEM Write Time </a> </h3></div>
+<div class="commands" >
+<p> <b> <big> <strong> Command Type:  </strong> </big>  </b>Command<br /><b> <big> <strong> Allowed modes:  </strong> </big>  </b>Fail Safe, Manual, Setup, Normal<br /><b> <big> <strong> Description:  </strong> </big>  </b>Requests a test of all eep block writes </p></div>
+
+<div class="commands" >
+<h3 ><a name="Request Data Bytes:" >Request Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="5%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 8)</td>
+<tr valign="top">
+<td>1</td><td>FFP NVMEM Forget Last Result<br /><i> FFP NVMEM Forget Last Result </i></td><td>char</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Allows fresh measurement of worst time if non-0</td>
+<tr valign="top">
+<td>2</td><td>FFP NVMEM Request All Writes<br /><i> FFP NVMEM Request All Writes </i></td><td>char</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Requests all eep blocks to be written if non-0</td></table><br /><h3 ><a name="Response Data Bytes:" >Response Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="10%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 8)</td></table><a href= "#HART Command Summary">Go Back to Summary </a></dt></div>
+<P CLASS="breakhere">
+<br /><div class="box"><h3 ><a name="Command 255,   9 - Read FFP Active Flash Bank" >Command 255,   9 - Read FFP Active Flash Bank </a> </h3></div>
+<div class="commands" >
+<p> <b> <big> <strong> Command Type:  </strong> </big>  </b>Read<br /><b> <big> <strong> Allowed modes:  </strong> </big>  </b>Fail Safe, Manual, Setup, Normal<br /><b> <big> <strong> Description:  </strong> </big>  </b>Read FFP Active Flash Bank </p></div>
+
+<div class="commands" >
+<h3 ><a name="Request Data Bytes:" >Request Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="5%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 9)</td></table><br /><h3 ><a name="Response Data Bytes:" >Response Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="10%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 9)</td>
+<tr valign="top">
+<td>1</td><td>FFP Flash Bank<br /><i> FFP Flash Bank </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Active Flash Bank (0 or 1)</td></table><a href= "#HART Command Summary">Go Back to Summary </a></dt></div>
+<P CLASS="breakhere">
+<br /><div class="box"><h3 ><a name="Command 255,  10 - Emulate Firmware Activation" >Command 255,  10 - Emulate Firmware Activation </a> </h3></div>
+<div class="commands" >
+<p> <b> <big> <strong> Command Type:  </strong> </big>  </b>Command<br /><b> <big> <strong> Allowed modes:  </strong> </big>  </b>Fail Safe, Manual, Setup, Normal<br /><b> <big> <strong> Description:  </strong> </big>  </b>Forces activation of flash partitions (banks) on both CPUs. Assumes both banks have valid flash images.
+ </p></div>
+
+<div class="commands" >
+<h3 ><a name="Request Data Bytes:" >Request Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="5%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 10)</td>
+<tr valign="top">
+<td>1</td><td>Flash Partition Change Request<br /><i> Flash Partition Change Request </i></td><td>uchar</td><td>&nbsp<br /></td><td>0 :: Flash Partition 0<br />1 :: Flash Partition 1<br />2 :: Flash Flip Partition<br /></td><td>Request for both FFP and APP</td></table><br /><h3 ><a name="Response Data Bytes:" >Response Data Bytes: </a> </h3><table border="1" cellpadding="5" cellspacing="0" width="95%"><tr><th width="5%">Byte</th> <th>Name</th> <th>Type</th> <th width="10%">Units</th> <th>Range</th><th>Description</th> </tr>
+<tr valign="top">
+<td>0</td><td>SubCmdNum<br /><i> SubCmdNum </i></td><td>uchar</td><td>&nbsp<br /></td><td>&nbsp<br /></td><td>Set to the value of this sub command number (Default Value = 10)</td></table><a href= "#HART Command Summary">Go Back to Summary </a></dt></div>
+<P CLASS="breakhere">
+
+</body>
+</html>
