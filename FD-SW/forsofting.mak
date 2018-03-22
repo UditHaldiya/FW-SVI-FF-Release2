@@ -26,14 +26,9 @@ $(info *******************************)
 
 #Do not change unless you know what you are doing;
 #For now, we use default installation of FF tokenizer
-TokenizerDir:=c:\ff
-FFTokenizerpath:=$(TokenizerDir)\tok\bin
-dictfile:=$(TokenizerDir)\ddl\standard.dct
-includepath:=$(TokenizerDir)\ddl
-releasepath:=$(TokenizerDir)\release
-imagepath:=$(TokenizerDir)\ddl\htk
-#Warining we need to suppress in tokenizer
-SurpressWarning:=718
+export TokenizerDir:=..\FFTokenizer
+export includepath:=$(TokenizerDir)\ddl
+export releasepath:=$(TokenizerDir)\release
 
 #Where Softing keeps their things
 SOURCE_BINARY_DD:=$(releasepath)\$(manufacturer_ID)\$(DEVICE_TYPE)
@@ -42,7 +37,7 @@ GW_DIR:=$(PROJDIR)\target\appl\fbif\script
 DDLDIR:=$(PROJDIR)\target/appl/fbif/ddl
 
 #MN files of interest: they need versioning info
-DDLSRC:=$(DDLDIR)/svi_positioner.ddl
+export DDLSRC:=$(DDLDIR)/svi_positioner.ddl
 DDLINC:=$(DDLDIR)/svi_ids.h
 
 .PHONY : GenVFD tok
@@ -53,31 +48,18 @@ DDL_root := $(PROJDIR)\target\appl\fbif
 GenVFD: tok
     cd $(DDL_root)\script && genVFD_FF.exe ../inc ../src ../ddl/$(DEVICE_TYPE)\$(DEVICE_REV)$(DD_REV).sy5 \
     $(MAIN_SCRIPT) -unpacked_structures
+	echo Timestamp of GenVFD step %TIME% %DATE% >$@
 
 #------
 
-_tok: $(pretok)
-    $(FFTokenizerpath)/ff_tok32.exe $(pretok)
-ifneq ($(option),)
-    $(MN_CP) $(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV).ffo $(dst)/
-    $(MN_CP) $(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV).sym $(dst)/
-else
-    $(MN_CP) $(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV).ff5 $(dst)/
-    $(MN_CP) $(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV).sy5 $(dst)/
-endif
-
-$(pretok) : $(DDLSRC) force
-    @echo option=$(option)
-    $(FFTokenizerpath)/ffpretok.exe $(option) -d $(dictfile) -w $(SurpressWarning) -I$(includepath) -R $(releasepath) -p "$(imagepath)" $< $@
-	$(pause)
-
-tok: $(DDLINC) $(GW_DIR)\ids.gw
+tok: $(DDLINC) $(GW_DIR)\ids.gw 
     $(cmpcpy) $(includepath)\standard.sym $(releasepath)\standard.sym
-    -cmd /E /C mkdir $(manufacturer_ID)\$(DEVICE_TYPE)
     -$(MN_RM) -f -r $(SOURCE_BINARY_DD)
     -cmd /E /C mkdir $(SOURCE_BINARY_DD)
-    $(MAKE) -f $(me) -C $(releasepath) _tok DDLSRC=$(DDLSRC) pretok=$(TARGET_BINARY_DD)\_tmptok-4 dst=$(TARGET_BINARY_DD) option="-a -DDD4 -4"
-    $(MAKE) -f $(me) -C $(releasepath) _tok DDLSRC=$(DDLSRC) pretok=$(TARGET_BINARY_DD)\_tmptok dst=$(TARGET_BINARY_DD) option=
+    $(MAKE) -f $(PROJDIR)\ffo.mak  _tok DDLSRC=$(DDLSRC) pretok=$(TARGET_BINARY_DD)\_tmptok-4 dst=$(TARGET_BINARY_DD) option="-a -DDD4 -4" basename=$(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV)
+    ren $(SOURCE_BINARY_DD)\symbols.txt symbols4.txt
+    $(MAKE) -f $(PROJDIR)\ffo.mak _tok DDLSRC=$(DDLSRC) pretok=$(TARGET_BINARY_DD)\_tmptok dst=$(TARGET_BINARY_DD) option=-a basename=$(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV)
+	echo Timestamp of tokenizer step %TIME% %DATE% >$@
 
 $(DDLINC) : $(MAKEFILE_LIST)
     @echo MAKEFILE_LIST = $(MAKEFILE_LIST)
@@ -86,9 +68,13 @@ $(DDLINC) : $(MAKEFILE_LIST)
     echo DEVICE_REVISION   $(DEVICE_REV),>>$@
     echo DD_REVISION       $(DD_REV)>>$@
 
-ifneq (,$(filter _tok,$(MAKECMDGALS)))
+Changeset:=$(if $(OFFver),$(OFFver),sandbox)
+
+changeset.inc : $(MAKEFILE_LIST)
+    @echo MAKEFILE_LIST = $(MAKEFILE_LIST)
+    $(Hide)echo #MP Setstr Changeset="$(Changeset)" >$@
+
 include ids.gwd
-endif
 
 $(info ISUBDIR=$(ISUBDIR))
 
@@ -104,10 +90,5 @@ ids.gw ids.gwd: changeset.inc gw_rb_helper.u
 $(GW_DIR)\ids.gw : ids.gw
     $(MN_CP) $< $@
 
-Changeset:=$(if $(OFFver),$(OFFver),sandbox)
-	
-changeset.inc : $(MAKEFILE_LIST)
-    @echo MAKEFILE_LIST = $(MAKEFILE_LIST)
-    $(Hide)echo #MP Setstr Changeset="$(Changeset)" >$@
 
 force : ;
