@@ -739,7 +739,7 @@ MENU mnu_current_group
 
 MENU mnu_temperature_group
 {
-    LABEL "|en|I/P";
+    LABEL "|en|Temperature";
     STYLE GROUP;
     ITEMS
     {
@@ -899,13 +899,17 @@ MENU mnu_characterization
         EDD(COLUMNBREAK)
         PARAM.CHAR_SELECTION.NUMBER_OF_POINTS_1 /*_svi2*/
         EDD(COLUMNBREAK)
+        EDD(ROWBREAK)
         mnu_characterPoints
+        PARAM.CUSTOM_CHAR_POINTS
+        EDD(ROWBREAK)
+        PARAM.CURRENT_CHAR_POINTS
     }
 }
 
 MENU mnu_characterPoints
 {
-    LABEL "|en|Characterization Points";
+    LABEL "|en|Characterization Points ";
     STYLE WINDOW;
     ITEMS
     {

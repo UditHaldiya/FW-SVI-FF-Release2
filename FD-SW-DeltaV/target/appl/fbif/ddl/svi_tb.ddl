@@ -2257,7 +2257,7 @@ RECORD temperature_lo_alert
     HELP HLP5(HLP_351_TEMPERATURE_LO_ALERT);
     MEMBERS
     {
-        TEMPERATURE_1, /*_svi2*/                        __float_contained_r;
+        TEMPERATURE_1, /*_svi2*/                        temp_value_with_unit;
         ALERT_POINT,                             _alert_point_temp_lo;
         DEADBAND,                                _deadband_temp;
         ALERT,                                   _alert;
