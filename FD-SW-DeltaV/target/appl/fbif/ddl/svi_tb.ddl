@@ -1788,7 +1788,7 @@ RECORD working_sp
     MEMBERS
     {
         STATUS,                                  __status_contained_r;
-        VALUE,                                   __float_contained;
+        VALUE,                                   __float_contained_r;
     }
 }
 RECORD working_pos
@@ -1798,7 +1798,7 @@ RECORD working_pos
     MEMBERS
     {
         STATUS,                                  __status_contained_r;
-        VALUE,                                   __float_contained;
+        VALUE,                                   __float_contained_r;
     }
 }
 RECORD svi2_deviation_alert
