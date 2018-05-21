@@ -51,14 +51,43 @@ GenVFD: tok
 	echo Timestamp of GenVFD step %TIME% %DATE% >$@
 
 #------
-
-tok: $(DDLINC) $(GW_DIR)\ids.gw 
-    $(cmpcpy) $(includepath)\standard.sym $(releasepath)\standard.sym
+#These commands offer ultimate freedom but may require
+#recompiling the firmware to match DD's .sym, .sy5, symbols.txt
+define DD_devel
     -$(MN_RM) -f -r $(SOURCE_BINARY_DD)
     -cmd /E /C mkdir $(SOURCE_BINARY_DD)
     $(MAKE) -f $(PROJDIR)\ffo.mak  _tok DDLSRC=$(DDLSRC) pretok=$(TARGET_BINARY_DD)\_tmptok-4 dst=$(TARGET_BINARY_DD) option="-a -DDD4 -4" basename=$(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV)
     ren $(SOURCE_BINARY_DD)\symbols.txt symbols4.txt
     $(MAKE) -f $(PROJDIR)\ffo.mak _tok DDLSRC=$(DDLSRC) pretok=$(TARGET_BINARY_DD)\_tmptok dst=$(TARGET_BINARY_DD) option=-a basename=$(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV)
+endef
+
+#These commands fail on incompatible .sym, .sy5, symbols.txt
+#but are compatible with existing firmware
+#It is possible for this build to fail on adding a brand new DD item.
+#In this case, you need to inspect the differences in .ref manually
+#and if they are only in new additions, manually update the reference files
+define DD_only
+    -$(MN_RM) -f -r $(SOURCE_BINARY_DD)
+    -cmd /E /C mkdir $(SOURCE_BINARY_DD)
+    $(MN_CP) $(TARGET_BINARY_DD)\symbols4.txt $(SOURCE_BINARY_DD)\symbols.txt
+    attrib -R $(SOURCE_BINARY_DD)\symbols.txt
+    $(MAKE) -f $(PROJDIR)\ffo.mak  _tok DDLSRC=$(DDLSRC) pretok=$(TARGET_BINARY_DD)\_tmptok-4 dst=$(TARGET_BINARY_DD) option="-DDD4 -4" basename=$(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV)
+    ren $(SOURCE_BINARY_DD)\symbols.txt symbols4.txt
+    sort $(SOURCE_BINARY_DD)\$(DEVICE_REV)$(DD_REV).sym > $(SOURCE_BINARY_DD)\$(DEVICE_REV)$(DD_REV).sym.ref
+    fc $(SOURCE_BINARY_DD)\$(DEVICE_REV)$(DD_REV).sym.ref $(TARGET_BINARY_DD)\$(DEVICE_REV)$(DD_REV).sym.ref
+    $(MN_CP) $(TARGET_BINARY_DD)\symbols.txt $(SOURCE_BINARY_DD)\symbols.txt
+    attrib -R $(SOURCE_BINARY_DD)\symbols.txt
+    $(MAKE) -f $(PROJDIR)\ffo.mak _tok DDLSRC=$(DDLSRC) pretok=$(TARGET_BINARY_DD)\_tmptok dst=$(TARGET_BINARY_DD) option=-a basename=$(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV)
+    sort $(SOURCE_BINARY_DD)\$(DEVICE_REV)$(DD_REV).sy5 > $(SOURCE_BINARY_DD)\$(DEVICE_REV)$(DD_REV).sy5.ref
+    fc $(SOURCE_BINARY_DD)\$(DEVICE_REV)$(DD_REV).sy5.ref $(TARGET_BINARY_DD)\$(DEVICE_REV)$(DD_REV).sy5.ref
+endef
+
+#We are doing maintenance on R2.1 without changing the firmware
+DD_command = $(DD_only)
+
+tok: $(DDLINC) $(GW_DIR)\ids.gw
+    $(cmpcpy) $(includepath)\standard.sym $(releasepath)\standard.sym
+    $(DD_command)
 	echo Timestamp of tokenizer step %TIME% %DATE% >$@
 
 $(DDLINC) : $(MAKEFILE_LIST)
