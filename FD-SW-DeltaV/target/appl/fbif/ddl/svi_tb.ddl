@@ -157,14 +157,14 @@ _float_contained_r_nd LIKE VARIABLE __float_contained_nd
 
 VARIABLE int_2_element
 {
-    LABEL           "|en|integer(2) element" ;
+    LABEL           "|en|element" ;
     CLASS           CONTAINED;
     TYPE            INTEGER (2) ;
 }
 
 VARIABLE int_element
 {
-    LABEL "|en|int element";
+    LABEL "|en|element";
     CLASS CONTAINED;
     TYPE INTEGER;
 }
@@ -397,17 +397,6 @@ VARIABLE _function
     TYPE ENUMERATED (1)
     {
         ENUM_FUNCTION
-    }
-}
-
-VARIABLE pos_percent
-{
-    LABEL LBL_POS_5_PERCENT_CLOSED;
-    HELP  HLP5(HLP_POS_5_PERCENT_CLOSED);
-    CLASS CONTAINED;
-    TYPE  FLOAT
-    {
-        DISPLAY_FORMAT "6.3f";
     }
 }
 
@@ -5142,58 +5131,10 @@ METHOD do_autotune
     }
 }
 
-#ifdef DD50
 METHOD   change_app_mode
 {
     LABEL "|en|change app mode";
-    HELP  "|en|to restore the app mode to Normal";
-    CLASS INPUT;
-    DEFINITION
-    {
-        COMMON_LOCAL_VARS;
-
-            unsigned long  old_value, new_value;
-        int            ivalue;
-        float          flt_buf;
-
-        maxlen = 256;
-        id = ITEM_ID(PARAM.APP_MODE);
-        mb = 0;
-
-        READ_PARAM(id, mb, "APP_MODE");
-        status = get_unsigned_value(id, mb, &us8_buf);
-        status = get_status_string(id, mb, us8_buf, str_buf, maxlen);
-        if ( us8_buf == CHANGE_NORMAL ) {
-            display_message("|en|Positioner is already under system control.\n"
-            "Nothing to do.\n\n", dummy, dummy, 0);
-        }
-        else {
-            status = select_from_menu("|en| "
-            "CAUTION!\nThere may be local personnel working with the valve\n"
-            "Make sure it is safe to switch the positioner to normal control\n\n"
-            "APP_MODE" " = %{str_buf}.\n" "Do you want to proceed?" "\n",
-                                    dummy, dummy, 0, "|en|Yes;No(Skip)", &ivalue);
-            display_message("|en|\n", dummy, dummy, 0);
-            if ( ivalue == 1 ) {
-
-                status = put_unsigned_value(id, mb, CHANGE_NORMAL);
-                SEND_PARAM(id, mb, "APP_MODE");
-
-                READ_PARAM(id, mb, "APP_MODE");
-                status = get_unsigned_value(id, 0, &us8_buf);
-                status = get_status_string(id, 0, us8_buf, str_buf, maxlen);
-                status = get_acknowledgement("|en| ""APP_MODE" " = %{str_buf}.\n",
-                                             dummy, dummy, 0);
-            }
-        }
-
-    }
-}
-#else
-METHOD   change_app_mode
-{
-    LABEL "|en|change app mode";
-    HELP  "|en|to restore the app mode to Normal";
+    HELP  "|en|Restore the app mode to Normal";
     CLASS INPUT;
     DEFINITION
     {
@@ -5213,11 +5154,11 @@ METHOD   change_app_mode
             status = get_status_string(id, mb, us8_buf, str_buf, maxlen);
         }
         if(status != BLTIN_SUCCESS) {
-            display_message("|en|Method must be run from Top Menu\n\n", dummy, dummy, 0);
+            display_message("|en|Unexpected error occurred. Please try again.\n\n", dummy, dummy, 0);
         }
         else if ( us8_buf == CHANGE_NORMAL ) {
             display_message("|en|Positioner is already under system control.\n"
-            "Nothing to do.\n\n", dummy, dummy, 0);
+            "The method is only applicable for LO mode of Transducer Block.\n\n", dummy, dummy, 0);
         }
         else {
             status = select_from_menu("|en| "
@@ -5244,68 +5185,6 @@ METHOD   change_app_mode
 
     }
 }
-#endif
-
-#ifdef DD49
-//AK version
-METHOD change_app_mode
-{
-    LABEL "|en|change app mode";
-    HELP  "|en|to restore the app mode to Normal";
-    CLASS INPUT;
-    DEFINITION
-    {
-        COMMON_LOCAL_VARS;
-
-            unsigned long  old_value, new_value;
-        int            ivalue;
-        float          flt_buf;
-
-        unsigned long tb;
-
-        maxlen = 256;
-        mb = 0;
-        tb = ITEM_ID(PTB);
-        id = ITEM_ID(PARAM.APP_MODE);
-
-        status = read_value2(tb, 0, id, mb);
-        if(status == BLTIN_SUCCESS) {
-            status = get_unsigned_value2(tb, 0, id, mb, &us8_buf);
-        }
-        if(status == BLTIN_SUCCESS) {
-            status = get_status_string(id, mb, us8_buf, str_buf, maxlen);
-        }
-        if(status != BLTIN_SUCCESS) {
-            display_message("|en|Method can't be executed because of an error.\n"
-            "Please try again later.\n\n", dummy, dummy, 0);
-        }
-        else if ( us8_buf == CHANGE_NORMAL ) {
-            display_message("|en|Positioner is already under system control.\n"
-            "Nothing to do.\n\n", dummy, dummy, 0);
-        }
-        else {
-            status = select_from_menu("|en| "
-            "CAUTION!\nThere may be local personnel working with the valve\n"
-            "Make sure it is safe to switch the positioner to normal control\n\n"
-            "APP_MODE" " = %{str_buf}.\n" "Do you want to proceed?" "\n",
-                                    dummy, dummy, 0, "|en|Yes;No(Skip)", &ivalue);
-            display_message("|en|\n", dummy, dummy, 0);
-            if ( ivalue == 1 ) {
-
-                status = put_unsigned_value(id, mb, CHANGE_NORMAL);
-                SEND_PARAM(id, mb, "APP_MODE");
-
-                READ_PARAM(id, mb, "APP_MODE");
-                status = get_unsigned_value(id, 0, &us8_buf);
-                status = get_status_string(id, 0, us8_buf, str_buf, maxlen);
-                status = get_acknowledgement("|en| ""APP_MODE" " = %{str_buf}.\n",
-                                             dummy, dummy, 0);
-            }
-        }
-
-    }
-}
-#endif
 
 METHOD  cancel_find_stops
 {

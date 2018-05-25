@@ -69,7 +69,7 @@
 
 #ifdef DDTEST
 #define ACCELERATE_FOR_DEV(x) (x)
-#define NO_ABORT_FOR_TEST(x) 
+#define NO_ABORT_FOR_TEST(x)
 #define TEST_ID_MID(id, mid)                                           \
 {                                                                      \
     tid = id;                                                          \
@@ -81,9 +81,9 @@
 unsigned long tid, tm_id \
 
 #else
-#define ACCELERATE_FOR_DEV(x) 
+#define ACCELERATE_FOR_DEV(x)
 #define NO_ABORT_FOR_TEST(x) x
-#define TEST_ID_MID(id, mid) 
+#define TEST_ID_MID(id, mid)
 #define TEST_VARS
 #endif
 
@@ -783,7 +783,7 @@ MENU device_status_#x_tb                                \
   "\n 3. Quick Open (reversal from Equal Percentage (50:1))"                            \
   "\n 4. Custom"                                                                        \
   "\n 5. Camflex Percentage"                                                            \
-  "\n 255. Activate Custom (Defined in CUSTOM_CHAR.CUSTOM_CHAR_POINTS)"                 \
+  /* "\n 255. Activate Custom (Defined in CUSTOM_CHAR.CUSTOM_CHAR_POINTS)" */                \
 
 #define LBL_CHAR_SEL_NUMBER_OF_POINTS                "|en|Number Of Points"
 
@@ -982,9 +982,9 @@ MENU device_status_#x_tb                                \
 #define AUTOTUNE_EXHAUST_TIME_EXCEEDED         77
 #define AUTOTUNE_OUT_OF_RANGE                  88
 
-#define CHANGE_SETUP     0x00 
-#define CHANGE_MANUAL    0x01 
-#define CHANGE_FAILSAFE  0x02 
+#define CHANGE_SETUP     0x00
+#define CHANGE_MANUAL    0x01
+#define CHANGE_FAILSAFE  0x02
 #define CHANGE_NORMAL    0x03
 
 #define SVI2_DBL_ACT             0x00
@@ -3316,6 +3316,20 @@ MENU device_status_#x_tb                                \
 /* travel_calibration,                     \ */
 /* find_stops,                             \ */
 
+#define TB_METHOD_LIST_DEF       \
+  /* update_custom_char_points, */ \
+  /* do_setup_wizard, */           \
+  /* do_configure_wizard, */       \
+  /*do_enable_position_limits, */  \
+  DO_FIND_STOPS, do_find_stops;             \
+  /* do_open_stop_adjustment, */   \
+  DO_AUTOTUNE, do_autotune;               \
+  DO_MANUAL_HI_LOW_STOPS, do_manual_hi_low_stops;    \
+  /*do_full_close, */        \
+  /*do_full_open,  */        \
+  /* do_set_position, */           \
+  CHANGE_APP_MODE, change_app_mode ;           \
+
 /*----------------------------/
 ** Enumerated Data Definitions
 /----------------------------*/
@@ -3483,8 +3497,11 @@ MENU device_status_#x_tb                                \
   {2,   "|en|Equal Percentage (50:1)", "|en|Equal Percentage (50:1)"},                                                                       \
   {3,   "|en|Quick Open", "|en|Quick Open (reversal from Equal Percentage (50:1))"},                                                         \
   {4,   "|en|Custom", "|en|Custom"},                                                                                                         \
-  {5,   "|en|Camflex Percentage", "|en|Camflex Percentage"},                                                                                 \
+  {5,   "|en|Camflex Percentage", "|en|Camflex Percentage"} \
+      /* \
+  ,                                                                                 \
   {255, "|en|Activate Custom (Defined in CUSTOM_CHAR.CUSTOM_CHAR_POINTS)", "|en|Activate Custom (Defined in CUSTOM_CHAR.CUSTOM_CHAR_POINTS)"}\
+      */
 
 #define ENUM_RELAY_TYPE                                                                                                                      \
   {1,   "|en|Standard Flow"},                                                                   \
