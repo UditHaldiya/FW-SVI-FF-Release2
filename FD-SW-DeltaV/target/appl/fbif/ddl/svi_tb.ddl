@@ -923,18 +923,21 @@ VARIABLE xd_fstate_opt
 
 _float_limited LIKE VARIABLE float_nd_with_max_min
 {
+    REDEFINE LABEL "|en|Travel Range";
     REDEFINE HELP HLP5(HLP_FLOAT_VALUE);
     REDEFINE_DATA_LIMITS(FLOAT, 0.1, 10000)
 }
 
 _deadband_ab_float_nd LIKE VARIABLE float_nd_with_max_min
 {
+    REDEFINE LABEL "|en|Deadband";
     REDEFINE HELP HLP5(HLP_FLOAT_VALUE);
     REDEFINE_DATA_LIMITS(FLOAT, 0.1, 10)
 }
 
 _deadband_ab_for_cycle_count LIKE VARIABLE float_nd_with_max_min
 {
+    REDEFINE LABEL "|en|Deadband";
     REDEFINE HELP HLP5(HLP_FLOAT_VALUE);
     REDEFINE_DATA_LIMITS(FLOAT, 0.05, 10)
 }
