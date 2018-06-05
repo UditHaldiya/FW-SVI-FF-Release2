@@ -3316,20 +3316,6 @@ MENU device_status_#x_tb                                \
 /* travel_calibration,                     \ */
 /* find_stops,                             \ */
 
-#define TB_METHOD_LIST_DEF       \
-  /* update_custom_char_points, */ \
-  /* do_setup_wizard, */           \
-  /* do_configure_wizard, */       \
-  /*do_enable_position_limits, */  \
-  DO_FIND_STOPS, do_find_stops;             \
-  /* do_open_stop_adjustment, */   \
-  DO_AUTOTUNE, do_autotune;               \
-  DO_MANUAL_HI_LOW_STOPS, do_manual_hi_low_stops;    \
-  /*do_full_close, */        \
-  /*do_full_open,  */        \
-  /* do_set_position, */           \
-  CHANGE_APP_MODE, change_app_mode ;           \
-
 /*----------------------------/
 ** Enumerated Data Definitions
 /----------------------------*/

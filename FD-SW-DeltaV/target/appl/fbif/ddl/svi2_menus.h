@@ -668,13 +668,6 @@ MENU mnu_actuator_b_pressure
         { TRUE; }
         ELSE
         { FALSE; }
-#if 0
-    EDD(VISIBILITY
-        IF( 1 )
-        { TRUE; }
-        ELSE
-        { FALSE; })
-#endif
     ITEMS
     {
         PARAM.ACTUATOR_B_PRESSURE.STATUS
@@ -889,63 +882,6 @@ MENU mnu_tuningdata
     }
 }
 
-#if 0
-GRID poscharact_active
-{
-    VECTORS {
-        {"|en|XY-point  1", PARAM.CURRENT_CHAR_POINTS[1], PARAM.CURRENT_CHAR_POINTS[2]},
-        {"|en|XY-point  2", PARAM.CURRENT_CHAR_POINTS[3], PARAM.CURRENT_CHAR_POINTS[4]},
-        {"|en|XY-point  3", PARAM.CURRENT_CHAR_POINTS[5], PARAM.CURRENT_CHAR_POINTS[6]},
-        {"|en|XY-point  4", PARAM.CURRENT_CHAR_POINTS[7], PARAM.CURRENT_CHAR_POINTS[8]},
-        {"|en|XY-point  5", PARAM.CURRENT_CHAR_POINTS[9], PARAM.CURRENT_CHAR_POINTS[10]},
-        {"|en|XY-point  6", PARAM.CURRENT_CHAR_POINTS[11], PARAM.CURRENT_CHAR_POINTS[12]},
-        {"|en|XY-point  7", PARAM.CURRENT_CHAR_POINTS[13], PARAM.CURRENT_CHAR_POINTS[14]},
-        {"|en|XY-point  8", PARAM.CURRENT_CHAR_POINTS[15], PARAM.CURRENT_CHAR_POINTS[16]},
-        {"|en|XY-point  9", PARAM.CURRENT_CHAR_POINTS[17], PARAM.CURRENT_CHAR_POINTS[18]},
-        {"|en|XY-point 10", PARAM.CURRENT_CHAR_POINTS[19], PARAM.CURRENT_CHAR_POINTS[20]},
-        {"|en|XY-point 11", PARAM.CURRENT_CHAR_POINTS[21], PARAM.CURRENT_CHAR_POINTS[22]},
-        {"|en|XY-point 12", PARAM.CURRENT_CHAR_POINTS[23], PARAM.CURRENT_CHAR_POINTS[24]},
-        {"|en|XY-point 13", PARAM.CURRENT_CHAR_POINTS[25], PARAM.CURRENT_CHAR_POINTS[26]},
-        {"|en|XY-point 14", PARAM.CURRENT_CHAR_POINTS[27], PARAM.CURRENT_CHAR_POINTS[28]},
-        {"|en|XY-point 15", PARAM.CURRENT_CHAR_POINTS[29], PARAM.CURRENT_CHAR_POINTS[30]},
-        {"|en|XY-point 16", PARAM.CURRENT_CHAR_POINTS[31], PARAM.CURRENT_CHAR_POINTS[32]},
-        {"|en|XY-point 17", PARAM.CURRENT_CHAR_POINTS[33], PARAM.CURRENT_CHAR_POINTS[34]},
-        {"|en|XY-point 18", PARAM.CURRENT_CHAR_POINTS[35], PARAM.CURRENT_CHAR_POINTS[36]},
-        {"|en|XY-point 19", PARAM.CURRENT_CHAR_POINTS[37], PARAM.CURRENT_CHAR_POINTS[38]}
-    }
-    HANDLING READ;
-    LABEL "|en|Currently active characterization";
-    ORIENTATION HORIZONTAL;
-}
-
-GRID poscharact_custom
-{
-    VECTORS {
-        {"|en|XY-point  1", PARAM.CUSTOM_CHAR_POINTS[1], PARAM.CUSTOM_CHAR_POINTS[2]},
-        {"|en|XY-point  2", PARAM.CUSTOM_CHAR_POINTS[3], PARAM.CUSTOM_CHAR_POINTS[4]},
-        {"|en|XY-point  3", PARAM.CUSTOM_CHAR_POINTS[5], PARAM.CUSTOM_CHAR_POINTS[6]},
-        {"|en|XY-point  4", PARAM.CUSTOM_CHAR_POINTS[7], PARAM.CUSTOM_CHAR_POINTS[8]},
-        {"|en|XY-point  5", PARAM.CUSTOM_CHAR_POINTS[9], PARAM.CUSTOM_CHAR_POINTS[10]},
-        {"|en|XY-point  6", PARAM.CUSTOM_CHAR_POINTS[11], PARAM.CUSTOM_CHAR_POINTS[12]},
-        {"|en|XY-point  7", PARAM.CUSTOM_CHAR_POINTS[13], PARAM.CUSTOM_CHAR_POINTS[14]},
-        {"|en|XY-point  8", PARAM.CUSTOM_CHAR_POINTS[15], PARAM.CUSTOM_CHAR_POINTS[16]},
-        {"|en|XY-point  9", PARAM.CUSTOM_CHAR_POINTS[17], PARAM.CUSTOM_CHAR_POINTS[18]},
-        {"|en|XY-point 10", PARAM.CUSTOM_CHAR_POINTS[19], PARAM.CUSTOM_CHAR_POINTS[20]},
-        {"|en|XY-point 11", PARAM.CUSTOM_CHAR_POINTS[21], PARAM.CUSTOM_CHAR_POINTS[22]},
-        {"|en|XY-point 12", PARAM.CUSTOM_CHAR_POINTS[23], PARAM.CUSTOM_CHAR_POINTS[24]},
-        {"|en|XY-point 13", PARAM.CUSTOM_CHAR_POINTS[25], PARAM.CUSTOM_CHAR_POINTS[26]},
-        {"|en|XY-point 14", PARAM.CUSTOM_CHAR_POINTS[27], PARAM.CUSTOM_CHAR_POINTS[28]},
-        {"|en|XY-point 15", PARAM.CUSTOM_CHAR_POINTS[29], PARAM.CUSTOM_CHAR_POINTS[30]},
-        {"|en|XY-point 16", PARAM.CUSTOM_CHAR_POINTS[31], PARAM.CUSTOM_CHAR_POINTS[32]},
-        {"|en|XY-point 17", PARAM.CUSTOM_CHAR_POINTS[33], PARAM.CUSTOM_CHAR_POINTS[34]},
-        {"|en|XY-point 18", PARAM.CUSTOM_CHAR_POINTS[35], PARAM.CUSTOM_CHAR_POINTS[36]},
-        {"|en|XY-point 19", PARAM.CUSTOM_CHAR_POINTS[37], PARAM.CUSTOM_CHAR_POINTS[38]}
-    }
-    LABEL "|en|Custom characterization (scratchpad)";
-    ORIENTATION HORIZONTAL;
-}
-#endif
-
 MENU mnu_characterization
 {
     LABEL "|en|Characterization";
@@ -956,11 +892,6 @@ MENU mnu_characterization
         EDD(COLUMNBREAK)
         PARAM.CHAR_SELECTION.NUMBER_OF_POINTS_1 /*_svi2*/
         EDD(COLUMNBREAK)
-#if 0
-        EDD(ROWBREAK)
-        poscharact_active EDD(COLUMNBREAK)
-        poscharact_custom
-#endif
     }
 }
 
@@ -1567,7 +1498,7 @@ MENU mnu_position_alert
 
 MENU mnu_supply_pressure_hilo_alert
 {
-    LABEL "|en|Supply pressure lolo/lo/hi alerts";
+    LABEL "|en|Supply pressure LoLo/Lo/Hi alerts";
     STYLE GROUP;
     ITEMS
     {
@@ -2221,14 +2152,6 @@ MENU mnu_process_in_device_diagnostic
         EDD(COLUMNBREAK)
         PARAM.MODE_BLK.ACTUAL
         EDD(COLUMNBREAK)
-            /* Doesn't compile
-        PTB [0] . METHOD . CHANGE_APP_MODE
-            */
-#ifndef DD4
-#endif
-/* Not working from RB context
-        change_app_mode
-*/
         EDD(ROWBREAK)
 
         PARAM.BLOCK_ERR
