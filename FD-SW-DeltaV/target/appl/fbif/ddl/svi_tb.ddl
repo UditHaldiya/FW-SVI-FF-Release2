@@ -629,10 +629,28 @@ VARIABLE final_value_f
     HELP            HLP5(HLP_FINAL_VALUE);
     CLASS           CONTAINED & SERVICE ;
     TYPE            FLOAT;
-    HANDLING        READ & WRITE ;
+    HANDLING
+    IF ((PARAM.MODE_BLK.ACTUAL|PARAM.MODE_BLK.TARGET) & _AUTOMATIC ) {
+        READ;
+    }
+    ELSE {
+        READ & WRITE ;
+    }
     CONSTANT_UNIT [unit_code_1342];
     /* DATA_LIMITS(-25,125) */
 }
+
+final_value_s LIKE VARIABLE __status_contained_srv
+{
+    REDEFINE HANDLING
+    IF ((PARAM.MODE_BLK.ACTUAL|PARAM.MODE_BLK.TARGET) & _AUTOMATIC ) {
+        READ;
+    }
+    ELSE {
+        READ & WRITE ;
+    }
+}
+
 float_position_value_r LIKE VARIABLE __float_contained_r
 {
     REDEFINE CONSTANT_UNIT [unit_code_1342];
@@ -1635,7 +1653,7 @@ RECORD final_value
     HELP HLP5(HLP_045_FINAL_VALUE);
     MEMBERS
     {
-        STATUS,                                  __status_contained_srv;
+        STATUS,                                  final_value_s;
         /*VALUE,                                   __float_contained_nd;*/ /*_047_value;*/
         VALUE,                                   final_value_f;
     }
