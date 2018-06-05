@@ -19,4 +19,5 @@ DOXYGEN:="$(ProgramFiles)\doxygen_$(DOXVER)\bin\doxygen.exe"
 #LanguagePack ?= English French Spanish Portuguese Japanese Italian German
 
 # ======== FFP-specific but made by FFAP build ===============
-include ..\FIRMWARE\inc_FFAP\ffids.mak
+# -- BUT: for maintenance, we use it hardcoded from the base version
+include inc_FFP\ffids.mak
