@@ -27,6 +27,8 @@ $(info *******************************)
 #Do not change unless you know what you are doing;
 #For now, we use default installation of FF tokenizer
 export TokenizerDir:=..\FFTokenizer
+#export TokenizerBin:=D:\FF
+export TokenizerBin:=$(TokenizerDir)
 export includepath:=$(TokenizerDir)\ddl
 export releasepath:=$(TokenizerDir)\release
 
@@ -66,9 +68,12 @@ endef
 #It is possible for this build to fail on adding a brand new DD item.
 #In this case, you need to inspect the differences in .ref manually
 #and if they are only in new additions, manually update the reference files
-define DD_only
+define DD_clean
     -$(MN_RM) -f -r $(SOURCE_BINARY_DD)
     -cmd /E /C mkdir $(SOURCE_BINARY_DD)
+endef
+define DD_only
+    $(DD_clean)
     $(MN_CP) $(TARGET_BINARY_DD)\symbols4.txt $(SOURCE_BINARY_DD)\symbols.txt
     attrib -R $(SOURCE_BINARY_DD)\symbols.txt
     $(MAKE) -f $(PROJDIR)\ffo.mak  _tok DDLSRC=$(DDLSRC) pretok=$(TARGET_BINARY_DD)\_tmptok-4 dst=$(TARGET_BINARY_DD) option="-DDD4 -4" basename=$(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV)
@@ -81,12 +86,18 @@ define DD_only
     sort $(SOURCE_BINARY_DD)\$(DEVICE_REV)$(DD_REV).sy5 > $(SOURCE_BINARY_DD)\$(DEVICE_REV)$(DD_REV).sy5.ref
     fc $(SOURCE_BINARY_DD)\$(DEVICE_REV)$(DD_REV).sy5.ref $(TARGET_BINARY_DD)\$(DEVICE_REV)$(DD_REV).sy5.ref
 endef
+define DD_test
+    $(DD_clean)
+    $(MAKE) -f $(PROJDIR)\ffo.mak  _tok pretok_exe=ff5pretok.exe tok_exe=ff5_tok32.exe DDLSRC=$(DDLSRC) pretok=$(TARGET_BINARY_DD)\_tmptok-4 dst=$(TARGET_BINARY_DD) option="-DDD4 -4" basename=$(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV)
+    $(MAKE) -f $(PROJDIR)\ffo.mak _tok pretok_exe=ff5pretok.exe tok_exe=ff5_tok32.exe DDLSRC=$(DDLSRC) pretok=$(TARGET_BINARY_DD)\_tmptok dst=$(TARGET_BINARY_DD) option= basename=$(SOURCE_BINARY_DD)/$(DEVICE_REV)$(DD_REV)
+endef
 
 #We are doing maintenance on R2.1 without changing the firmware
 DD_command = $(DD_only)
 
 tok: $(DDLINC) $(GW_DIR)\ids.gw
     $(cmpcpy) $(includepath)\standard.sym $(releasepath)\standard.sym
+    $(DD_test)
     $(DD_command)
 	echo Timestamp of tokenizer step %TIME% %DATE% >$@
 

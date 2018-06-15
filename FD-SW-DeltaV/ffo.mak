@@ -1,13 +1,17 @@
 .PHONY: $(pretok)
 
-FFTokenizerpath:=$(TokenizerDir)\tok\bin
+FFTokenizerpath:=$(TokenizerBin)\tok\bin
 dictfile:=$(TokenizerDir)\ddl\standard.dct
 imagepath:=$(TokenizerDir)\ddl\htk
 #Warining we need to suppress in tokenizer
-SurpressWarning:=718
+SurpressWarning:=718,768
+pretok_exe?=ffpretok.exe
+tok_exe?=ff_tok32.exe
+#pretok_exe:=ff5pretok.exe
+#tok_exe:=ff5_tok32.exe
 
 _tok: $(pretok)
-    $(FFTokenizerpath)\ff_tok32.exe -s $(TokenizerDir)\release $(pretok)
+    $(FFTokenizerpath)\$(tok_exe) -s $(TokenizerBin)\release $(pretok)
 ifneq ($(filter -DDD4,$(option)),)
     $(MN_CP) $(basename).ffo $(dst)/
     $(MN_CP) $(basename).sym $(dst)/
@@ -18,6 +22,6 @@ endif
 
 $(pretok) : $(DDLSRC)
     @echo option=$(option)
-    $(FFTokenizerpath)\ffpretok.exe $(option) -d $(dictfile) -w $(SurpressWarning) -I$(includepath) -R $(releasepath) -p "$(imagepath)" $< $@
+    $(FFTokenizerpath)\$(pretok_exe) $(option) -d $(dictfile) -w $(SurpressWarning) -I$(includepath) -R $(releasepath) -p "$(imagepath)" $< $@
 	$(pause)
 
