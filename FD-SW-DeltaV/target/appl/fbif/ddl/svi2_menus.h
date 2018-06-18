@@ -886,8 +886,10 @@ MENU mnu_mode_row
         PARAM.MODE_BLK.ACTUAL
         EDD(COLUMNBREAK)
         PARAM.MODE_BLK.PERMITTED
+/* Can't cross-reference menus between blocks
         EDD(COLUMNBREAK)
         change_app_mode
+*/
     }
 }
 
@@ -901,6 +903,8 @@ MENU  mnu_tbmode_mode
         EDD(COLUMNBREAK)
         PARAM.MODE_BLK.ACTUAL
         EDD(ROWBREAK)
+        EDD(COLUMNBREAK)
+        change_app_mode
     }
 }
 
