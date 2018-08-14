@@ -33,7 +33,7 @@ VersionOD       = 0x01
 ProfileNumber   = 0x4d47
 
 [Device VFD 2]  // FB VFD
-VendorName      = "GE SENSING"
+VendorName      = "Dresser Valve Division"
 ModelName       = "SVI"
 Revision        = "2.42"
 VersionOD       = 0x01
