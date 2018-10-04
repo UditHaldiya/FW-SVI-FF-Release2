@@ -2132,7 +2132,7 @@ MENU mnu_config
 ** Status menus
 /-------------*/
 
-MENU diagnostic_root_menu_rb
+MENU process_variables_root_menu_rb
 {
     LABEL "|en|Process Variable";
     ITEMS
@@ -2186,7 +2186,7 @@ MENU mnu_identification_in_process_variable
 ** Device menus
 /-------------*/
 
-MENU process_variables_root_menu_rb
+MENU diagnostic_root_menu_rb
 {
     LABEL "|en|Device Diagnostic";
     ITEMS
@@ -2230,6 +2230,13 @@ MENU mnu_alarms_in_device_diagnostic
 
         mnu_write_alm
         EDD(COLUMNBREAK)
+
+        mnu_maint_alm
+        EDD(COLUMNBREAK)
+
+        mnu_offspec_alm
+        EDD(COLUMNBREAK)
+
         mnu_alarm_sum
     }
 }
@@ -2341,7 +2348,34 @@ MENU mnu_write_alm
     }
 }
 
+MENU mnu_maint_alm
+{
+    LABEL "|en|Maintenance Alm";
+    STYLE(GROUP)
+    ITEMS
+    {
+        PARAM.FD_MAINT_ALM.UNACKNOWLEDGED,
+        PARAM.FD_MAINT_ALM.ALARM_STATE,
+        PARAM.FD_MAINT_ALM.TIME_STAMP,
+        PARAM.FD_MAINT_ALM.SUB_CODE,
+        PARAM.FD_MAINT_ALM.VALUE
+    }
+}
 
+
+MENU mnu_offspec_alm
+{
+    LABEL "|en|Off-spec Alm";
+    STYLE(GROUP)
+    ITEMS
+    {
+        PARAM.FD_OFFSPEC_ALM.UNACKNOWLEDGED,
+        PARAM.FD_OFFSPEC_ALM.ALARM_STATE,
+        PARAM.FD_OFFSPEC_ALM.TIME_STAMP,
+        PARAM.FD_OFFSPEC_ALM.SUB_CODE,
+        PARAM.FD_OFFSPEC_ALM.VALUE
+    }
+}
 
 MENU mnu_alarm_sum
 {
