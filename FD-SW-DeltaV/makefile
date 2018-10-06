@@ -181,8 +181,8 @@ export INCDIR
 # ---------------- End IAR toolchain setup -------------------
 
 # - - - Masoneilan/Ernie's/Ark's/Unix-like add-ons - - - -
-#MNTOOLS:=$(PROJDIR)\..\FIRMWARE\tools
-MNTOOLS:=$(PROJDIR)\tools
+MNTOOLS:=$(PROJDIR)\..\FIRMWARE\tools
+#MNTOOLS:=$(PROJDIR)\tools
 MNS_CONVERT:=$(MNTOOLS)\mnhextool.exe
 MN_SED:=$(MNTOOLS)\sed.exe --text
 UNIMAL:=$(MNTOOLS)\Unimal.exe
