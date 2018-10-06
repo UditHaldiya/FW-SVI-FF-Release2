@@ -181,7 +181,8 @@ export INCDIR
 # ---------------- End IAR toolchain setup -------------------
 
 # - - - Masoneilan/Ernie's/Ark's/Unix-like add-ons - - - -
-MNTOOLS:=$(PROJDIR)\..\FIRMWARE\tools
+#MNTOOLS:=$(PROJDIR)\..\FIRMWARE\tools
+MNTOOLS:=$(PROJDIR)\tools
 MNS_CONVERT:=$(MNTOOLS)\mnhextool.exe
 MN_SED:=$(MNTOOLS)\sed.exe --text
 UNIMAL:=$(MNTOOLS)\Unimal.exe
@@ -307,7 +308,8 @@ BUILD: $(CMDDIR_PROJ) $(GEN) $(LINT_OPT) force
 UNIMAL: REQIMPORT
     $(Hide)$(MAKE) -r -f $(buildexec) UNIMAL OBJDIR=$(CMDDIR)
 
-REQIMPORT : FEATURES $(MAKEFILE_LIST)
+#REQIMPORT : FEATURES $(MAKEFILE_LIST)
+REQIMPORT : $(MAKEFILE_LIST)
     $(Hide)$(MAKE) -r -f $(REQIMPORT) REQIMPORT OBJDIR=$(CMDDIR)
 
 FEATURES: MEMMAP

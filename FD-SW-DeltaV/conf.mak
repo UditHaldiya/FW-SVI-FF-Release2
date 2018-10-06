@@ -8,7 +8,7 @@ ISUBDIR:= includes inc_$(PROJ)
 #Supported HART versions
 export hart_versions=5
 hcimport=$(PROJDIR)/../FIRMWARE/$(HELPERS)/hcimportn.mak
-FORCED_DEPENDENCY_LOCAL+=hcgenerate
+#FORCED_DEPENDENCY_LOCAL+=hcgenerate
 hcgenerate:force;$(MAKE) -f $(hcimport) fname=inc_$(PROJ)/ffhartdef
 force:;
 
@@ -58,5 +58,5 @@ LintDirArg += -estring(962, MODULE_ID) -estring(767, MODULE_ID) /* Softing modul
 
 # ------------ end project adaptation -------------------
 
-SUBDIR:= base target diagnostics utilities framework sysio services inc_$(PROJ)
+#SUBDIR:= base target diagnostics utilities framework sysio services inc_$(PROJ)
 
