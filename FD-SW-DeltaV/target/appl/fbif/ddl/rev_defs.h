@@ -25,7 +25,6 @@ FILE_NAME          rev_defs.h
 #define SFT_MIO_PARM_dev_rev             0x01      /*  Std Parms for MIO blocks  DD-LIB V3.70 */
 
 #define SFT_RES_BLOCK_2_dev_rev          0x01      /*  DD-LIB V3.70 */
-
 #define SFT_PID_BLOCK_dev_rev            0x01      /*  DD-LIB V3.70 */
 #define SFT_AI_BLOCK_dev_rev             0x01      /*  DD-LIB V3.70 */
 #define SFT_DI_BLOCK_dev_rev             0x01      /*  DD-LIB V3.70 */
