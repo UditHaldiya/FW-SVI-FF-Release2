@@ -2102,7 +2102,7 @@ MENU mnu_tb_exconfig
         PARAM.BOOSTER.MODEL
         PARAM.BOOSTER.QTY
         PARAM.ACCESSORY.SOLENOID
-        /* PARAM.ACCESSORY.POSITION_SENSOR_TYPE */
+        /*PARAM.ACCESSORY.POSITION_SENSOR_TYPE*/
         PARAM.ACCESSORY.REMOTE_SENSOR
     }
 }
@@ -2150,34 +2150,29 @@ MENU mnu_identification_in_process_variable
     ITEMS
     {
         __res_2_character.BLOCK_TAG
-        EDD(ROWBREAK)
-
+        EDD(COLUMNBREAK)
         PARAM.MANUFAC_ID
-        EDD(COLUMNBREAK)
+		EDD(ROWBREAK)
         PARAM.DEV_TYPE
-        EDD(COLUMNBREAK)
+		EDD(COLUMNBREAK)
         PARAM.DEV_REV
         EDD(ROWBREAK)
-
         PARAM.DD_RESOURCE
-        EDD(COLUMNBREAK)
+		EDD(COLUMNBREAK)
         PARAM.DD_REV
-        EDD(COLUMNBREAK)
+		EDD(ROWBREAK)
         PARAM.ITK_VER
-        EDD(ROWBREAK)
-
-
+        EDD(COLUMNBREAK)
         PARAM.SOFTWARE_REV
-        EDD(COLUMNBREAK)
+		EDD(ROWBREAK)
         PARAM.HARDWARE_REV
-        EDD(COLUMNBREAK)
+		EDD(COLUMNBREAK)
         PARAM.COMPATIBILITY_REV
         EDD(ROWBREAK)
-
         PARAM.TAG_DESC
-        EDD(COLUMNBREAK)
+		EDD(COLUMNBREAK)
         PARAM.SOFTWARE_REV_FF
-        EDD(COLUMNBREAK)
+		EDD(ROWBREAK)
         PARAM.SOFTWARE_REV_APP
     }
 }
@@ -2185,7 +2180,22 @@ MENU mnu_identification_in_process_variable
 /*-------------/
 ** Device menus
 /-------------*/
-
+MENU mnu_fDiagactive
+{
+LABEL "|en|FD Active Alerts";
+STYLE(PAGE)
+ITEMS
+{
+	   __fd_fail_active
+		EDD(COLUMNBREAK)
+		__fd_offspec_active
+		EDD(COLUMNBREAK)
+		__fd_maint_active
+		EDD(COLUMNBREAK)
+		__fd_check_active
+		EDD(COLUMNBREAK)
+}
+}
 MENU diagnostic_root_menu_rb
 {
     LABEL "|en|Device Diagnostic";
@@ -2193,6 +2203,7 @@ MENU diagnostic_root_menu_rb
     {
         mnu_process_in_device_diagnostic
         mnu_alarms_in_device_diagnostic
+		mnu_fDiagactive
     }
 }
 
@@ -2222,6 +2233,7 @@ MENU mnu_alarms_in_device_diagnostic
     STYLE(PAGE)
     ITEMS
     {
+		
         mnu_update_evt
         EDD(COLUMNBREAK)
 
@@ -2238,6 +2250,8 @@ MENU mnu_alarms_in_device_diagnostic
         EDD(COLUMNBREAK)
 
         mnu_alarm_sum
+		
+		
     }
 }
 
@@ -2247,7 +2261,7 @@ MENU mnu_features
     STYLE(PAGE)
     ITEMS
     {
-        PARAM.FEATURES
+        /*PARAM.FEATURES*/
         PARAM.FEATURE_SEL
     }
 }
@@ -2515,24 +2529,21 @@ MENU mnu_identification_in_device_setup
     ITEMS
     {
         __res_2_character.BLOCK_TAG
-        EDD(ROWBREAK)
-
+        EDD(COLUMNBREAK)
         PARAM.MANUFAC_ID
-        EDD(COLUMNBREAK)
-        PARAM.DEV_TYPE
-        EDD(COLUMNBREAK)
+        EDD(ROWBREAK)
+		PARAM.DEV_TYPE
+		EDD(COLUMNBREAK)
         PARAM.DEV_REV
-        EDD(ROWBREAK)
-
+		EDD(ROWBREAK)
         PARAM.DD_REV
-        EDD(COLUMNBREAK)
+		EDD(COLUMNBREAK)
         PARAM.ITK_VER
-        EDD(COLUMNBREAK)
-        PARAM.SOFTWARE_REV
         EDD(ROWBREAK)
-
-        PARAM.HARDWARE_REV
+        PARAM.SOFTWARE_REV
         EDD(COLUMNBREAK)
+        PARAM.HARDWARE_REV
+        EDD(ROWBREAK)
         PARAM.TAG_DESC
         EDD(COLUMNBREAK)
         PARAM.SOFTWARE_REV_FF
@@ -2551,14 +2562,80 @@ MENU mnu_options
          EDD(COLUMNBREAK)
          PARAM.GRANT_DENY.DENY
          EDD(COLUMNBREAK)
-         PARAM.FEATURES
+		 PARAM.FEATURE_SEL
+         /*PARAM.FEATURES*/
          EDD(ROWBREAK)
          PARAM.CYCLE_SEL
-         EDD(COLUMNBREAK)
-         PARAM.CYCLE_TYPE
+         /*EDD(COLUMNBREAK)
+         PARAM.CYCLE_TYPE*/
     }
 }
 
+
+
+MENU mnu_fDiagmap
+{
+	LABEL "|en|FD Alert Map";
+STYLE(PAGE)
+ITEMS
+{
+	    __fd_fail_map
+		EDD(COLUMNBREAK)
+		__fd_offspec_map
+		EDD(COLUMNBREAK)
+		__fd_maint_map
+		EDD(COLUMNBREAK)
+		__fd_check_map
+		EDD(COLUMNBREAK)
+}
+}
+
+MENU mnu_fDiagmask
+{
+	LABEL "|en|FD Alert Mask";
+STYLE(PAGE)
+ITEMS
+{
+	    __fd_fail_mask
+		EDD(COLUMNBREAK)
+		__fd_offspec_mask
+		EDD(COLUMNBREAK)
+		__fd_maint_mask
+		EDD(COLUMNBREAK)
+		__fd_check_mask
+		EDD(COLUMNBREAK)
+}
+}
+
+MENU mnu_fDiagAlertpriorities
+{
+LABEL "|en|FD Alert Priorities";
+STYLE(PAGE)
+ITEMS
+{
+	    __fd_fail_pri
+		EDD(COLUMNBREAK)
+		__fd_offspec_pri
+		EDD(COLUMNBREAK)
+		__fd_maint_pri
+		EDD(COLUMNBREAK)
+		__fd_check_pri
+		EDD(COLUMNBREAK)
+}
+}
+
+MENU mnu_fDiag
+{
+	LABEL "|en|FD Alert Configuration";
+STYLE(PAGE)
+ITEMS
+{
+	/*mnu_fDiagactive*/
+	mnu_fDiagmap
+	mnu_fDiagmask
+	mnu_fDiagAlertpriorities
+}
+}
 MENU device_root_menu_rb
 {
     LABEL "|en|Device Setup";
@@ -2569,7 +2646,8 @@ MENU device_root_menu_rb
         mnu_hardware
         mnu_alarm_in_device_setup
         mnu_options
-    }
+		mnu_fDiag
+	    }
 }
 
 /*----------/

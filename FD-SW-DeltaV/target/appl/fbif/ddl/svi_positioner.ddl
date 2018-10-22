@@ -80,6 +80,9 @@ IMPORT MANUFACTURER     __FF,
               CONSTANT_UNIT   [blank] ;
               HANDLING        READ ;
           }
+		  
+		
+		 
 
           REDEFINE VARIABLE    __manufac_id
           {
@@ -145,7 +148,8 @@ IMPORT MANUFACTURER     __FF,
                   { 0x03,    [restart_defaults],      [restart_defaults_help] },
                   { 0x04,    [restart_processor],     [restart_processor_help] },
                   { 0x05,    RESTART_FACTORY_DEFAULT, RESTART_FACTORY_DEFAULT_HELP }
-              }
+				  /*{ 0x06,    Advanced,                HLP_ADVANCED}*/
+			}
               HANDLING        READ & WRITE ;
           /*  RESPONSE_CODES  xxx ; */
           }
@@ -382,6 +386,7 @@ IMPORT MANUFACTURER     __FF,
           }
 
 
+
           /* The following redefinition are necessary as the following
              bit-enumerations need a device-specific definition           */
 
@@ -395,7 +400,7 @@ IMPORT MANUFACTURER     __FF,
                   FD_CONDITIONS_ENUM
               }
               CONSTANT_UNIT   [blank] ;
-              HANDLING        READ  ;
+              HANDLING        READ  ; 
           }
 
           REDEFINE VARIABLE     __fd_offspec_active
@@ -408,7 +413,7 @@ IMPORT MANUFACTURER     __FF,
                   FD_CONDITIONS_ENUM
               }
               CONSTANT_UNIT   [blank] ;
-              HANDLING        READ  ;
+              HANDLING        READ; 
           }
 
           REDEFINE VARIABLE     __fd_maint_active
@@ -421,7 +426,7 @@ IMPORT MANUFACTURER     __FF,
                   FD_CONDITIONS_ENUM
               }
               CONSTANT_UNIT   [blank] ;
-              HANDLING        READ  ;
+              HANDLING        READ; 
           }
 
           REDEFINE VARIABLE     __fd_check_active
@@ -434,7 +439,7 @@ IMPORT MANUFACTURER     __FF,
                   FD_CONDITIONS_ENUM
               }
               CONSTANT_UNIT   [blank] ;
-              HANDLING        READ  ;
+              HANDLING        READ  ; 
           }
 
           REDEFINE VARIABLE     __fd_fail_map
@@ -791,6 +796,7 @@ DD_REVISION      SFT_RES_BLOCK_2_dd_rev
             }
 
         }
+
 
         VARIABLE_LIST   __res_2_view_1
         {

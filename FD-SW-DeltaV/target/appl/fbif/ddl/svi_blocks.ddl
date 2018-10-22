@@ -178,7 +178,10 @@ VARIABLE software_rev_ff
     LABEL LBL_048_SOFTWARE_REV_FF;
     HELP  HLP_048_SOFTWARE_REV_FF;
     CLASS CONTAINED;
-    TYPE UNSIGNED_INTEGER (4);
+    TYPE UNSIGNED_INTEGER (4)
+	{
+		DISPLAY_FORMAT "x";
+	}
     HANDLING READ;
 }
 
@@ -187,10 +190,14 @@ VARIABLE software_rev_app
     LABEL LBL_049_SOFTWARE_REV_APP;
     HELP  HLP_049_SOFTWARE_REV_APP;
     CLASS CONTAINED;
-    TYPE UNSIGNED_INTEGER (4);
+    TYPE UNSIGNED_INTEGER (4)
+	{
+		 DISPLAY_FORMAT "x";      
+	}
     HANDLING READ;
 
 }
+
 
 /*-------------------------------------------/
 ** Methods
