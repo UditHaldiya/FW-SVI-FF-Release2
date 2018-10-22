@@ -2666,6 +2666,11 @@ menu            mnu_do_discretecontrol                    0x200B3
 menu            mnu_do_failedstate                        0x200B5 
 menu            mnu_do_switches                           0x200B4 
 menu            mnu_extremes                              0x20113 
+menu            mnu_fDiag                                 0x202A3 
+menu            mnu_fDiagactive                           0x2029D 
+menu            mnu_fDiagAlertpriorities                  0x202A2 
+menu            mnu_fDiagmap                              0x202A0 
+menu            mnu_fDiagmask                             0x202A1 
 menu            mnu_features                              0x20115 
 menu            mnu_final_value                           0x200C4 
 menu            mnu_finalposition_value                   0x200C5 
@@ -2678,10 +2683,10 @@ menu            mnu_identification_in_device_setup                 0x2011F
 menu            mnu_identification_in_process_variable                 0x20114 
 menu            mnu_inputs                                0x200D6 
 menu            mnu_ip_current_alert                      0x200F8 
-menu            mnu_maint_alm                             0x2029D 
+menu            mnu_maint_alm                             0x2029E 
 menu            mnu_mode_row                              0x200DB 
 menu            mnu_nearclosedalert                       0x200E9 
-menu            mnu_offspec_alm                           0x2029E 
+menu            mnu_offspec_alm                           0x2029F 
 menu            mnu_options                               0x20120 
 menu            mnu_pidinfo                               0x200D5 
 menu            mnu_pilot_pressure                        0x200CF 
@@ -4861,7 +4866,7 @@ variable        discrete_input_value      enumerated      0x20167
 variable        do_channel                enumerated      0x20012 
 variable        end_position              unused          0x2028A 
 variable        final_value_f             float           0x20161 
-variable        final_value_s             unused          0x2029F 
+variable        final_value_s             unused          0x202A4 
 variable        find_stops                enumerated      0x20056 
 variable        float_nd_with_max_min     float           0x2016F 
 variable        float_position_value_r    unused          0x20162 
