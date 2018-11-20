@@ -1109,11 +1109,31 @@ member          TEMPERATURE_EXTREMES      parameter       0x40020065
 variable        svi2_rb_target_mode       bit-enumerated  0x20294 
 record          temperature_hi_alert                      0x20051 
 member          POSITION_HIHI_ALERT       parameter       0x40020010 
-menu            mnu_maint_alm                             0x2029E 
-menu            mnu_fDiagmask                             0x202A1 
-menu            mnu_fDiagactive                           0x2029D 
-menu            mnu_offspec_alm                           0x2029F 
-menu            mnu_fDiag                                 0x202A3 
-variable        final_value_s             unused          0x202A4 
-menu            mnu_fDiagmap                              0x202A0 
-menu            mnu_fDiagAlertpriorities                  0x202A2 
+menu            mnu_position_alert_lo                     0x202A3 
+menu            mnu_do2_switches                          0x2029F 
+menu            mnu_maint_alm                             0x202AF 
+method          FD_FAIL_MAP_default                       0x202B3 
+menu            mnu_fail_alm                              0x202B1 
+menu            mnu_ip_current_alert_lo                   0x202AC 
+menu            mnu_fDiagmask                             0x202B4 
+menu            mnu_custuningdata                         0x202A1 
+menu            mnu_fDiagactive                           0x202AE 
+menu            mnu_di_switches                           0x2029D 
+menu            mnu_temperature_alerts_hi                 0x202AB 
+menu            mnu_position_alert_lolo                   0x202A5 
+method          FD_FAIL_pri_default                       0x202B6 
+menu            mnu_position_alert_hihi                   0x202A6 
+menu            mnu_offspec_alm                           0x202B0 
+menu            mnu_fDiag                                 0x202B7 
+method          do_read_write_control_set                 0x202A2 
+menu            mnu_temperature_alerts_lo                 0x202AA 
+variable        final_value_s             unused          0x202B8 
+menu            mnu_supply_hi                             0x202A9 
+menu            mnu_fDiagmap                              0x202B2 
+menu            mnu_act_tuningdata                        0x202A0 
+menu            mnu_fDiagAlertpriorities                  0x202B5 
+menu            mnu_do1_switches                          0x2029E 
+menu            mnu_ip_current_alert_hi                   0x202AD 
+menu            mnu_supply_ll                             0x202A7 
+menu            mnu_supply_lo                             0x202A8 
+menu            mnu_position_alert_hi                     0x202A4 
