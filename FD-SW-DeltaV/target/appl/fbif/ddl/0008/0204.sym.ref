@@ -2627,6 +2627,7 @@ menu            hdiagnostic_ptb                           0x2009D
 menu            hprocess_variables_ptb                    0x2009E 
 menu            Menu_Top_ptb                              0x20095 
 menu            Menu_Top_rb                               0x20121 
+menu            mnu_act_tuningdata                        0x202A0 
 menu            mnu_actuator                              0x200D7 
 menu            mnu_actuator_a_pressure                   0x200CC 
 menu            mnu_actuator_b_pressure                   0x200CD 
@@ -2654,23 +2655,28 @@ menu            mnu_config_pressure                       0x20108
 menu            mnu_config_temperature                    0x2010A 
 menu            mnu_current_group                         0x200D1 
 menu            mnu_currentfaultlist                      0x200E3 
+menu            mnu_custuningdata                         0x202A1 
 menu            mnu_cycle                                 0x200F1 
 menu            mnu_cyclealertA                           0x200EF 
 menu            mnu_cyclealertB                           0x200F0 
 menu            mnu_deviceinfo                            0x20112 
 menu            mnu_devicestatusfaults                    0x200A6 
+menu            mnu_di_switches                           0x2029D 
 menu            mnu_diag_configuration                    0x200AB 
 menu            mnu_discrete_switch_configure                 0x200F9 
 menu            mnu_do_control                            0x200AD 
 menu            mnu_do_discretecontrol                    0x200B3 
 menu            mnu_do_failedstate                        0x200B5 
 menu            mnu_do_switches                           0x200B4 
+menu            mnu_do1_switches                          0x2029E 
+menu            mnu_do2_switches                          0x2029F 
 menu            mnu_extremes                              0x20113 
-menu            mnu_fDiag                                 0x202A3 
-menu            mnu_fDiagactive                           0x2029D 
-menu            mnu_fDiagAlertpriorities                  0x202A2 
-menu            mnu_fDiagmap                              0x202A0 
-menu            mnu_fDiagmask                             0x202A1 
+menu            mnu_fail_alm                              0x202B1 
+menu            mnu_fDiag                                 0x202B7 
+menu            mnu_fDiagactive                           0x202AE 
+menu            mnu_fDiagAlertpriorities                  0x202B5 
+menu            mnu_fDiagmap                              0x202B2 
+menu            mnu_fDiagmask                             0x202B4 
 menu            mnu_features                              0x20115 
 menu            mnu_final_value                           0x200C4 
 menu            mnu_finalposition_value                   0x200C5 
@@ -2683,14 +2689,20 @@ menu            mnu_identification_in_device_setup                 0x2011F
 menu            mnu_identification_in_process_variable                 0x20114 
 menu            mnu_inputs                                0x200D6 
 menu            mnu_ip_current_alert                      0x200F8 
-menu            mnu_maint_alm                             0x2029E 
+menu            mnu_ip_current_alert_hi                   0x202AD 
+menu            mnu_ip_current_alert_lo                   0x202AC 
+menu            mnu_maint_alm                             0x202AF 
 menu            mnu_mode_row                              0x200DB 
 menu            mnu_nearclosedalert                       0x200E9 
-menu            mnu_offspec_alm                           0x2029F 
+menu            mnu_offspec_alm                           0x202B0 
 menu            mnu_options                               0x20120 
 menu            mnu_pidinfo                               0x200D5 
 menu            mnu_pilot_pressure                        0x200CF 
 menu            mnu_position_alert                        0x200F5 
+menu            mnu_position_alert_hi                     0x202A4 
+menu            mnu_position_alert_hihi                   0x202A6 
+menu            mnu_position_alert_lo                     0x202A3 
+menu            mnu_position_alert_lolo                   0x202A5 
 menu            mnu_position_configuration                 0x200FB 
 menu            mnu_position_group                        0x200CA 
 menu            mnu_position_hilo_alert                   0x200F4 
@@ -2710,12 +2722,17 @@ menu            mnu_sensormeasurements                    0x200A7
 menu            mnu_setpoint_value                        0x200C8 
 menu            mnu_startup                               0x2009F 
 menu            mnu_strokevalve                           0x200D4 
+menu            mnu_supply_hi                             0x202A9 
+menu            mnu_supply_ll                             0x202A7 
+menu            mnu_supply_lo                             0x202A8 
 menu            mnu_supply_pressure                       0x200CB 
 menu            mnu_supply_pressure_hilo_alert                 0x200F6 
 menu            mnu_tb_exconfig                           0x200A4 
 menu            mnu_tb_process                            0x200A0 
 menu            mnu_tbmode_mode                           0x200D3 
 menu            mnu_temperature_alerts                    0x200F7 
+menu            mnu_temperature_alerts_hi                 0x202AB 
+menu            mnu_temperature_alerts_lo                 0x202AA 
 menu            mnu_temperature_group                     0x200D2 
 menu            mnu_travel                                0x200EE 
 menu            mnu_travelalertA                          0x200EC 
@@ -2739,7 +2756,10 @@ method          clear_current_fault                       0x200E5
 method          do_autotune                               0x20097 
 method          do_find_stops                             0x20096 
 method          do_manual_hi_low_stops                    0x20098 
+method          do_read_write_control_set                 0x202A2 
 method          do_test_wr_limits                         0x20292 
+method          FD_FAIL_MAP_default                       0x202B3 
+method          FD_FAIL_pri_default                       0x202B6 
 method          restart                                   0x2000A 
 method          scale_to_counts                           0x2012A 
 method          scale_to_percent                          0x20129 
@@ -4866,7 +4886,7 @@ variable        discrete_input_value      enumerated      0x20167
 variable        do_channel                enumerated      0x20012 
 variable        end_position              unused          0x2028A 
 variable        final_value_f             float           0x20161 
-variable        final_value_s             unused          0x202A4 
+variable        final_value_s             unused          0x202B8 
 variable        find_stops                enumerated      0x20056 
 variable        float_nd_with_max_min     float           0x2016F 
 variable        float_position_value_r    unused          0x20162 

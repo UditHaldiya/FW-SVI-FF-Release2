@@ -207,6 +207,7 @@ record          __process_value_range_a_13                 0x80023B87
 unit            __unit_pcb2_second_val_unit                 0x80024008 
 var-list        __generic_xdcr_view_2                     0x80020512 
 variable        __units_index             enumerated      0x8002001D 
+menu            mnu_position_alert_lo                     0x202A3 
 record          __process_value_range_a_14                 0x80023B88 
 record          __calcd_character                         0x80020F16 
 var-list        __generic_xdcr_view_3                     0x80020513 
@@ -556,6 +557,7 @@ var-list        __ar_view_1                               0x80020891
 record          __out_rem                                 0x80020D8E 
 member          TAG_DESC                  parameter       0xC0010180 
 member          FEATURE_SEL               parameter       0xC00100DC 
+menu            mnu_do2_switches                          0x2029F 
 member          AIR_SUPPLY_ALERT_CNT      record          0x40020126 
 var-list        __ar_view_2                               0x80020892 
 member          CHANNEL_MAP_ENTRY         parameter       0xC0010353 
@@ -764,7 +766,7 @@ member          VL_TOTALIZER_OPTS         variable-list   0xC0010EC6
 member          VL_LO_LIMX                variable-list   0xC0010E14 
 member          LO_LIMX                   parameter       0xC0010E13 
 variable        __write_lock              enumerated      0x8002018E 
-menu            mnu_maint_alm                             0x2029E 
+menu            mnu_maint_alm                             0x202AF 
 variable        compatibility_rev         unsigned        0x20003 
 variable        sv_unit                   enumerated      0x20017 
 menu            mnu_positionhistogram                     0x200E7 
@@ -826,6 +828,7 @@ collection      upload_wanted_pcb2        RESERVED        0x8002400B
 member          POSITION_HIHI_ALERT_STATE record          0x400200F7 
 var-list        __it_view_1                               0x800207B1 
 variable        __field_val_r             float           0x8002019A 
+method          FD_FAIL_MAP_default                       0x202B3 
 menu            mnu_config_pressure                       0x20108 
 variable        __var_names9_entry        unused          0x80023D4F 
 record          __hart_5v                                 0x80023D47 
@@ -1250,6 +1253,7 @@ array           factory_use_2                             0x20078
 variable        _travel_accumulation_b_alert_2 unsigned        0x2023B 
 record          __process_value_range_a_5                 0x80023B7F 
 var-list        __mbi64_view_3                            0x80023503 
+menu            mnu_fail_alm                              0x202B1 
 member          SUPPORTING_HARDWARE_ALERT_CNT record          0x40020127 
 record          __process_value_range_a_6                 0x80023B80 
 var-list        __mbi64_view_4                            0x80023504 
@@ -1306,6 +1310,7 @@ member          VST_MODE                  parameter       0xC00104B1
 member          VALVE_SN                  parameter       0xC0010420 
 variable        __deviation_time          float           0x80020488 
 member          VL_STATUS_OPTS            variable-list   0xC001017D 
+menu            mnu_ip_current_alert_lo                   0x202AC 
 member          NEAR_CLOSED               record          0x400200DD 
 member          TRAVEL_ACCUMULATION_B_ALERT_ACT record          0x4002014E 
 variable        __table_element_data_type unsigned        0x80021740 
@@ -1403,7 +1408,7 @@ variable        pos_50_percent_r          unused          0x20148
 variable        __ack_option_pd           bit-enumerated  0x8002023A 
 variable        __lim_notify              unsigned        0x8002010E 
 menu            mnu_discrete_switch_configure                 0x200F9 
-menu            mnu_fDiagmask                             0x202A1 
+menu            mnu_fDiagmask                             0x202B4 
 collection      no_download_mai           RESERVED        0x800209CE 
 variable        __cal_unit_1              enumerated      0x8002044C 
 variable        __sp_rate_dn              float           0x80020176 
@@ -1463,6 +1468,7 @@ record          __process_value_b_27                      0x80023B4B
 member          POS_FEATURES              parameter       0xC0011726 
 member          Y14_VALUE_U               record          0xC001170D 
 variable        __y6_value_u              unsigned        0x8002171C 
+menu            mnu_custuningdata                         0x202A1 
 menu            mnu_actuator                              0x200D7 
 variable        _valve_type               enumerated      0x20266 
 record          __process_value_b_28                      0x80023B4C 
@@ -1684,7 +1690,7 @@ member          BKCAL_SEL_2               parameter       0xC00100A6
 member          RAW_POSITION              parameter       0x4002004E 
 var-list        __res_2_view_3                            0x80020AF3 
 member          BKCAL_SEL_3               parameter       0xC00100A8 
-menu            mnu_fDiagactive                           0x2029D 
+menu            mnu_fDiagactive                           0x202AE 
 member          POSITION_HI_ALERT_STATE   record          0x400200F8 
 variable        __hart_unit               enumerated      0x80023D64 
 member          Y10_VALUE_U               record          0xC0011709 
@@ -1751,6 +1757,7 @@ member          VL_FSTATE_VAL2            variable-list   0xC0010A2B
 member          PST_BREAKOUT_TIMEOUT      parameter       0xC0011736 
 record          __primary_value_range                     0x80020378 
 variable        __rs_state                enumerated      0x80020158 
+menu            mnu_di_switches                           0x2029D 
 member          CHANNEL_TAG_16            parameter       0xC0013A02 
 member          VL_FSTATE_VAL3            variable-list   0xC0010A2C 
 member          DEVIATION_DEADBAND        parameter       0xC0010488 
@@ -1785,6 +1792,7 @@ member          VL_FSTATE_VAL8            variable-list   0xC0010A31
 unit            __unit_tc2s_cal_unit_2                    0x800206B8 
 member          CAL_MIN_SPAN              parameter       0xC0010342 
 member          VL_MODE_BLK               variable-list   0xC0010127 
+menu            mnu_temperature_alerts_hi                 0x202AB 
 variable        uint_4_element_r          unsigned        0x20135 
 var-list        __pab_view_2                              0x80023002 
 member          VL_READBACK_SELECT        variable-list   0xC00104E4 
@@ -1814,6 +1822,7 @@ member          VORTEX_SHEDDING_FREQUENCY parameter       0xC00104D2
 variable        __io_opts_ai              bit-enumerated  0x800201D9 
 variable        air_supply_alert          unused          0x20218 
 member          VALVE_TYPE                parameter       0xC0010438 
+menu            mnu_position_alert_lolo                   0x202A5 
 variable        _ip_drive_current_deadband float           0x20163 
 record          __it_character                            0x800207B6 
 variable        __lo_lim                  float           0x80020114 
@@ -1905,6 +1914,7 @@ record          __rio_vfd_xdcr_character                  0x80023905
 var-list        __custom_calc_view_3                      0x80021B03 
 var-list        __custom_in_view_3                        0x80021803 
 member          LOCKVAL                   parameter       0xC0010D4B 
+method          FD_FAIL_pri_default                       0x202B6 
 variable        ai_channel                enumerated      0x2000F 
 member          POSITION_HI_ALERT_ACT     record          0x40020148 
 var-list        __custom_calc_view_4                      0x80021B04 
@@ -1941,6 +1951,7 @@ member          POSITION_EXTREMES         parameter       0x40020063
 variable        device_status_0_c         bit-enumerated  0x2018C 
 member          X28_VALUE_U               record          0xC001052E 
 member          PLUG_TYPE                 record          0x40020180 
+menu            mnu_position_alert_hihi                   0x202A6 
 record          position_hihi_alert                       0x2002E 
 variable        __force_enb_b64           bit-string      0x80023A0B 
 variable        __xd_command_flags        enumerated      0x800204BC 
@@ -2213,7 +2224,7 @@ unit            __unit_pcb_sensor_range                   0x80020636
 variable        __stroke_time_open        float           0x800204A7 
 member          COMB_TYPE                 parameter       0xC0010DE3 
 member          VL_INPUT_OPTS             variable-list   0xC0010DC6 
-menu            mnu_offspec_alm                           0x2029F 
+menu            mnu_offspec_alm                           0x202B0 
 member          HISTORY_STATUS_2_H        record          0x400200C9 
 member          Y10_VALUE_F               record          0xC001050D 
 variable        __x10_value_u             unsigned        0x80021703 
@@ -2288,7 +2299,7 @@ member          FSTATE_VAL_16             parameter       0xC0013A08
 member          PRIMARY_VALUE_1           parameter       0xC001044E 
 member          VL_INIT_VAL_2             variable-list   0xC0010E80 
 variable        __iv_desc_2               visiblestring   0x80020DDD 
-menu            mnu_fDiag                                 0x202A3 
+menu            mnu_fDiag                                 0x202B7 
 record          svi2_rb_mode_blk                          0x20000 
 variable        _limit_rate               float           0x201D1 
 member          PRIMARY_VALUE_2           parameter       0xC001046C 
@@ -2640,6 +2651,7 @@ member          PRIMARY_VALUE_RANGE       parameter       0xC0010378
 member          VL_FAIL                   variable-list   0xC0010D34 
 member          VCR_NUMBER                record          0xC0010072 
 variable        __io_opts_di              bit-enumerated  0x80020219 
+method          do_read_write_control_set                 0x202A2 
 menu            mnu_position_hilo_alert                   0x200F4 
 variable        _fstate_time              float           0x201E5 
 member          VALUE11                   record          0xC0013A32 
@@ -2759,6 +2771,7 @@ member          VL_OUT_D5                 variable-list   0xC0010A4F
 variable        __pst_ramp_rate           float           0x8002049D 
 member          TRAVEL_TIMER              parameter       0xC0010D29 
 member          VL_WRITE_LOCK             variable-list   0xC001018F 
+menu            mnu_temperature_alerts_lo                 0x202AA 
 member          VL_IP_DRIVE_CURRENT_LO_ALERT variable-list   0x400200A3 
 variable        _cycle_counter            unsigned        0x201DF 
 variable        __hart_medium             unsigned        0x80023D1F 
@@ -2803,7 +2816,7 @@ var-list        __pos_a_d_xdcr_view_3                     0x80022903
 member          Y19_VALUE_U               record          0xC0011712 
 variable        __comp_lo_lim             float           0x80020D85 
 variable        __dd_revis                unsigned        0x80020004 
-variable        final_value_s             unused          0x202A4 
+variable        final_value_s             unused          0x202B8 
 member          OPEN_STOP_ADJUSTMENT      parameter       0x4002004A 
 variable        _model                    visiblestring   0x20271 
 var-list        __pos_a_d_xdcr_view_4                     0x80022904 
@@ -3118,6 +3131,7 @@ member          VL_MEMORY_SIZE            variable-list   0xC0010123
 member          VL_FDD_LOCATOR            variable-list   0xC0010B26 
 variable        __status_opts_calcd       bit-enumerated  0x80020F17 
 variable        __unacked_summary_di      bit-enumerated  0x8002021D 
+menu            mnu_supply_hi                             0x202A9 
 variable        __reserved_8_DS_175_1     unsigned        0x80023D6C 
 record          __rio_h1_xdcr_character                   0x80023305 
 unit            __unit_rlcb_cal_unit                      0x80020675 
@@ -3481,7 +3495,7 @@ member          X2_VALUE_U                record          0xC0010514
 member          SENSOR_CONNECTION_2       parameter       0xC001047A 
 member          CFM_ACT2_TIME             parameter       0xC0010D3B 
 member          CLR_CHECK                 parameter       0xC0010B2F 
-menu            mnu_fDiagmap                              0x202A0 
+menu            mnu_fDiagmap                              0x202B2 
 member          VL_NEAR_CLOSED_ALERT      variable-list   0x4002009A 
 axis            y_axis_final_pos                          0x200B8 
 block           __output_splitter                         0x80020730 
@@ -3820,6 +3834,7 @@ variable        __number_view_4           unsigned        0x8002000D
 variable        _same_as_actuator         enumerated      0x2026F 
 record          __sc_character                            0x80020757 
 array           __trend_samples_float                     0x80020043 
+menu            mnu_act_tuningdata                        0x202A0 
 member          VL_INTERNAL_TEMP_UNITS    variable-list   0xC0011776 
 member          RATE                      parameter       0xC0010142 
 variable        __control_opts_spid       bit-enumerated  0x80020838 
@@ -4257,7 +4272,7 @@ var-list        __dt_view_1                               0x80020791
 var-list        __mao_view_3                              0x800209D3 
 member          INST_EX_LIM               parameter       0xC0010E37 
 member          VL_NV_CYCLE_T             variable-list   0xC0010129 
-menu            mnu_fDiagAlertpriorities                  0x202A2 
+menu            mnu_fDiagAlertpriorities                  0x202B5 
 array           __hart_resp                               0x80023D39 
 var-list        __dt_view_2                               0x80020792 
 var-list        __mao_view_4                              0x800209D4 
@@ -4683,6 +4698,7 @@ record          __fcb_character                           0x80020629
 variable        __x16_value_u             unsigned        0x80021709 
 block           __bias_gain_block                         0x80020250 
 member          VL_BKCAL_OUT              variable-list   0xC00100A1 
+menu            mnu_do1_switches                          0x2029E 
 variable        _position_hi_alert_r      unused          0x2021C 
 member          IO_THRESHOLD_A_14         parameter       0xC0013B94 
 member          IO_THRESHOLD_A_15         parameter       0xC0013B95 
@@ -4744,6 +4760,7 @@ member          GAIN                      parameter       0xC00100F4
 variable        __reset                   float           0x80020150 
 variable        _current                  float           0x201F1 
 variable        __test_boolean            boolean         0x8002007A 
+menu            mnu_ip_current_alert_hi                   0x202AD 
 variable        _ff_r                     unsigned        0x201F9 
 member          VL_BLOCK_ALM              variable-list   0xC00100AB 
 record          __block_alm                               0x800200AA 
@@ -4765,6 +4782,7 @@ record          discrete_switch_1_conf                    0x20065
 member          X12_VALUE_U               record          0xC001051E 
 member          X_VALUE_U                 record          0xC00104DC 
 variable        __status_contained_srv    enumerated      0x8002174B 
+menu            mnu_supply_ll                             0x202A7 
 collection      upload_wanted_ar          RESERVED        0x800208AF 
 var-list        __spg_view_1                              0x80020851 
 variable        __xd_error                enumerated      0x80020428 
@@ -4782,6 +4800,7 @@ variable        __gain_in_2               float           0x80020D81
 variable        __status_output_r_nd      enumerated      0x80020D10 
 member          NUM_OF_PARAMS             record          0xC0010009 
 record          __dv_lo_alm                               0x800200D4 
+menu            mnu_supply_lo                             0x202A8 
 variable        _prs_control_hi           unused          0x2025B 
 var-list        __spg_view_4                              0x80020854 
 collection      upload_wanted_gen_xdcr    RESERVED        0x8002052F 
@@ -4879,6 +4898,7 @@ member          TEMPERATURE_HI_ALERT_CNT  record          0x4002011E
 member          PROCESS_VALUE_A_5         parameter       0xC0013B25 
 member          X7_VALUE_U                record          0xC0010519 
 record          __init_val_1                              0x80020DD8 
+menu            mnu_position_alert_hi                     0x202A4 
 variable        _deadband_ab_for_cycle_count unused          0x20185 
 member          PROCESS_VALUE_A_6         parameter       0xC0013B26 
 member          VL_CAL_VALUE              variable-list   0xC0011779 

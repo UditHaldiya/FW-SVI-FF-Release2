@@ -217,7 +217,7 @@ METHOD  restart
 
         id = ITEM_ID(PARAM.RESTART);
         status = select_from_menu("|en|Please select the restart type.\n", dummy, dummy, 0,
-                                   "Run;Resource;Defaults;Processor;Factory Defaults", &ivalue);
+                                   "Defaults;Run;Resource;Processor;Factory Defaults", &ivalue);/*changed sequence for menu*/
 
         switch( ivalue ) {
         case 1:
@@ -244,6 +244,112 @@ METHOD  restart
         return;
     }
 }
+
+METHOD  FD_FAIL_MAP_default
+{
+    LABEL "|en|Set FD MAP to default";
+	HELP "|en|Sets FD MAP to default values";
+    CLASS OUTPUT;
+    DEFINITION
+    {
+       
+        long            status;             /*  error return from builtins  */
+        unsigned long uvalue ;
+		unsigned long uvalue1 ;
+		unsigned long uvalue2 ;
+		unsigned long uvalue3 ;
+		uvalue=0xFFFFFFFF;
+		uvalue1=0xFFFFFFFF;
+		uvalue2=0xFFFFFFFF;
+		uvalue3=0xFFFFFFFF;
+        status=put_unsigned_value(ITEM_ID(__fd_fail_map),0,uvalue);
+		status=put_unsigned_value(ITEM_ID(__fd_offspec_map),0,uvalue1);
+		status=put_unsigned_value(ITEM_ID(__fd_maint_map),0,uvalue2);
+		status=put_unsigned_value(ITEM_ID(__fd_check_map),0,uvalue3);
+        status=send_all_values();
+        return;
+    }
+}
+/*METHOD  FD_OFFSPEC_MAP_default
+{
+    LABEL "|en|Set FD OFFSPEC MAP to default";
+	HELP "|en|Sets FD OFFSPEC MAP to default values";
+    CLASS OUTPUT;
+    DEFINITION
+    {
+       
+        long            status;             
+        unsigned long uvalue ;
+
+		uvalue=0xFFFFFFFF;
+        status=put_unsigned_value(ITEM_ID(__fd_offspec_map),0,uvalue);
+       status=send_all_values();
+        return;
+    }
+}
+METHOD  FD_MAINT_MAP_default
+{
+    LABEL "|en|Set FD MAINT MAP to default";
+	HELP "|en|Sets FD MAINT MAP to default values";
+    CLASS OUTPUT;
+    DEFINITION
+    {
+       
+        long            status;             
+        unsigned long uvalue ;
+
+		uvalue=0xFFFFFFFF;
+        status=put_unsigned_value(ITEM_ID(__fd_maint_map),0,uvalue);
+       status=send_all_values();
+        return;
+    }
+}
+METHOD  FD_CHECK_MAP_default
+{
+    LABEL "|en|Set FD CHECK MAP to default";
+	HELP "|en|Sets FD CHECK MAP to default values";
+    CLASS OUTPUT;
+    DEFINITION
+    {
+       
+        long            status;           
+        unsigned long uvalue ;
+
+		uvalue=0xFFFFFFFF;
+        status=put_unsigned_value(ITEM_ID(__fd_check_map),0,uvalue);
+       status=send_all_values();
+        return;
+    }
+}*/
+/*fd priorities set to default */
+
+METHOD  FD_FAIL_pri_default
+{
+    LABEL "|en|Set FD priority to default";
+	HELP "|en|Sets FD priority to default values";
+    CLASS OUTPUT;
+    DEFINITION
+    {
+       
+        long status;             
+        unsigned long uvalue;
+		unsigned long uvalue1;
+		unsigned long uvalue2;
+		unsigned long uvalue3;
+		uvalue=0xB;
+		uvalue1=0x07;
+		uvalue2=0x06;
+		uvalue3=0x05;
+        status=put_unsigned_value(ITEM_ID(__fd_fail_pri),0,uvalue);
+		status=put_unsigned_value(ITEM_ID(__fd_offspec_pri),0,uvalue1);
+		status=put_unsigned_value(ITEM_ID(__fd_maint_pri),0,uvalue2);
+		status=put_unsigned_value(ITEM_ID(__fd_check_pri),0,uvalue3);
+        status=send_all_values();
+        return;
+    }
+}
+
+
 
 /*===========================================/
 * Input Selector Block

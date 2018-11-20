@@ -3632,8 +3632,8 @@ MENU device_status_#x_tb                                \
   {AUTOTUNE_OUT_OF_RANGE,                       "|en|88 - Parameter out of range"               } \
 
 #define ENUM_REMOTE_SENSOR \
-  { 0, "0 - Remote sensor is disabled/Not Active(Read Only)"} \
-  { 1, "1 - Remote sensor is enabled(Read Only)"} \
+  { 0, "0 - Remote sensor is disabled/Not Active"} \
+  { 1, "1 - Remote sensor is enabled"} \
   { 2, "2 - Enable Local HAL Sensor"} \
   { 3, "3 - Enable Remote Sensor"} \
 
