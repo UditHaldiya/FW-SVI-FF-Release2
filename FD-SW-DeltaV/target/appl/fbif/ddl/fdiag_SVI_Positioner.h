@@ -145,27 +145,6 @@ This file contains DD labels and DD help strings for Field Diagnositics paramete
     { 0x00000080,  "|en|Block Configuration Error",               HLP5("|en|Block Configuration Error") },\
     { 0x00000100,  "|en|Other",                                   HLP5("|en|Other") },\
     { 0x00000200,  "|en|Faults reported in Detected_Faults only", HLP5("|en|Faults reported in Detected_Faults only") },\
-    { 0x00000400,  "|en|Cond21",                                  HLP5("|en|Cond21 help") },\
-    { 0x00000800,  "|en|Cond20",                                  HLP5("|en|Cond20 help") },\
-    { 0x00001000,  "|en|Cond19",                                  HLP5("|en|Cond19 help") },\
-    { 0x00002000,  "|en|Cond18",                                  HLP5("|en|Cond18 help") },\
-    { 0x00004000,  "|en|Cond17",                                  HLP5("|en|Cond17 help") },\
-    { 0x00008000,  "|en|Cond16",                                  HLP5("|en|Cond16 help") },\
-    { 0x00010000,  "|en|Cond15",                                  HLP5("|en|Cond15 help") },\
-    { 0x00020000,  "|en|Cond14",                                  HLP5("|en|Cond14 help") },\
-    { 0x00040000,  "|en|Cond13",                                  HLP5("|en|Cond13 help") },\
-    { 0x00080000,  "|en|Cond12",                                  HLP5("|en|Cond12 help") },\
-    { 0x00100000,  "|en|Cond11",                                  HLP5("|en|Cond11 help") },\
-    { 0x00200000,  "|en|Cond10",                                  HLP5("|en|Cond10 help") },\
-    { 0x00400000,  "|en|Cond09",                                  HLP5("|en|Cond09 help") },\
-    { 0x00800000,  "|en|Cond08",                                  HLP5("|en|Cond08 help") },\
-    { 0x01000000,  "|en|Cond07",                                  HLP5("|en|Cond07 help") },\
-    { 0x02000000,  "|en|Cond06",                                  HLP5("|en|Cond06 help") },\
-    { 0x04000000,  "|en|Cond05",                                  HLP5("|en|Cond05 help") },\
-    { 0x08000000,  "|en|Cond04",                                  HLP5("|en|Cond04 help") },\
-    { 0x10000000,  "|en|Cond03",                                  HLP5("|en|Cond03 help") },\
-    { 0x20000000,  "|en|Cond02",                                  HLP5("|en|Cond02 help") },\
-    { 0x40000000,  "|en|Cond01",                                  HLP5("|en|Cond01 help") },\
     { 0x80000000,  "|en|Transducer Block does not work properly", HLP5("|en|Transducer Block does not work properly") }
                                                                   
 
@@ -181,27 +160,6 @@ This file contains DD labels and DD help strings for Field Diagnositics paramete
     { 0x00000080,  "|en|Block Configuration Error Disabled",               HLP5("|en|Block Configuration Error disabled") },\
     { 0x00000100,  "|en|Other Disabled",                                   HLP5("|en|Other disabled") },\
     { 0x00000200,  "|en|Faults reported in Detected_Faults only Disabled", HLP5("|en|Faults reported in Detected_Faults only disabled") },\
-    { 0x00000400,  "|en|Cond21 Disabled",                                  HLP5("|en|Cond21 disabled help") },\
-    { 0x00000800,  "|en|Cond20 Disabled",                                  HLP5("|en|Cond20 disabled help") },\
-    { 0x00001000,  "|en|Cond19 Disabled",                                  HLP5("|en|Cond19 disabled help") },\
-    { 0x00002000,  "|en|Cond18 Disabled",                                  HLP5("|en|Cond18 disabled help") },\
-    { 0x00004000,  "|en|Cond17 Disabled",                                  HLP5("|en|Cond17 disabled help") },\
-    { 0x00008000,  "|en|Cond16 Disabled",                                  HLP5("|en|Cond16 disabled help") },\
-    { 0x00010000,  "|en|Cond15 Disabled",                                  HLP5("|en|Cond15 disabled help") },\
-    { 0x00020000,  "|en|Cond14 Disabled",                                  HLP5("|en|Cond14 disabled help") },\
-    { 0x00040000,  "|en|Cond13 Disabled",                                  HLP5("|en|Cond13 disabled help") },\
-    { 0x00080000,  "|en|Cond12 Disabled",                                  HLP5("|en|Cond12 disabled help") },\
-    { 0x00100000,  "|en|Cond11 Disabled",                                  HLP5("|en|Cond11 disabled help") },\
-    { 0x00200000,  "|en|Cond10 Disabled",                                  HLP5("|en|Cond10 disabled help") },\
-    { 0x00400000,  "|en|Cond09 Disabled",                                  HLP5("|en|Cond09 disabled help") },\
-    { 0x00800000,  "|en|Cond08 Disabled",                                  HLP5("|en|Cond08 disabled help") },\
-    { 0x01000000,  "|en|Cond07 Disabled",                                  HLP5("|en|Cond07 disabled help") },\
-    { 0x02000000,  "|en|Cond06 Disabled",                                  HLP5("|en|Cond06 disabled help") },\
-    { 0x04000000,  "|en|Cond05 Disabled",                                  HLP5("|en|Cond05 disabled help") },\
-    { 0x08000000,  "|en|Cond04 Disabled",                                  HLP5("|en|Cond04 disabled help") },\
-    { 0x10000000,  "|en|Cond03 Disabled",                                  HLP5("|en|Cond03 disabled help") },\
-    { 0x20000000,  "|en|Cond02 Disabled",                                  HLP5("|en|Cond02 disabled help") },\
-    { 0x40000000,  "|en|Cond01 Disabled",                                  HLP5("|en|Cond01 disabled help") },\
     { 0x80000000,  "|en|Transducer Block does not work properly Disabled", HLP5("|en|Transducer Block does not work properly disabled ") }
                                                                            
 

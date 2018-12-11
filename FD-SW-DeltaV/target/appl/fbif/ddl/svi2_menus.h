@@ -256,6 +256,7 @@ MENU diagnostic_root_menu_ptb
         mnu_trend
         mnu_positionerstate
         mnu_diag_configuration
+	    mnu_extremes
     }
 }
 
@@ -910,7 +911,7 @@ MENU mnu_strokevalve
 
 MENU mnu_mode_row
 {
-    LABEL "|en|RB Block Mode";
+    LABEL "|en|Block Mode";
     STYLE(GROUP)
     ITEMS
     {
@@ -2147,7 +2148,6 @@ MENU mnu_deviceinfo
         mnu_actuator
         mnu_valve_info
         mnu_valve_body
-        mnu_extremes
     }
 }
 
@@ -2225,6 +2225,7 @@ MENU mnu_valve_body
 MENU mnu_extremes
 {
     LABEL "|en|Extremes";
+    STYLE(WINDOW)
     ITEMS
     {
         PARAM.POSITION_EXTREMES.FINAL_VALUE_MAX

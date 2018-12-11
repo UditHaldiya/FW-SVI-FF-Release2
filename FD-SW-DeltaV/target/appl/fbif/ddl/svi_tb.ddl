@@ -5327,8 +5327,7 @@ METHOD  clear_current_fault
 
         id = ITEM_ID(PARAM.CLEAR_STATUS);
         mb = 0;
-
-        status = put_unsigned_value(id, mb, CLEAR_CURRENT_STATUS);
+		status = put_unsigned_value(id, mb, CLEAR_CURRENT_STATUS);
         SEND_PARAM(id, mb, "CLEAR_STATUS:CURRENT");
         display_message("|en|\n Current faults was cleared.", dummy,dummy, 0);
 
@@ -5561,7 +5560,7 @@ METHOD  do_manual_hi_low_stops
 
 
             status = select_from_menu("|en|\nPlease select:\n",
-                                      dummy, dummy, 0, "Accept;Continue;Concel", &ivalue);
+                                      dummy, dummy, 0, "Accept;Continue;Cancel", &ivalue);
 
             if ( ivalue == 1 ) /* Accept */
             {

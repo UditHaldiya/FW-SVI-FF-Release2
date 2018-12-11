@@ -180,7 +180,7 @@ VARIABLE software_rev_ff
     CLASS CONTAINED;
     TYPE UNSIGNED_INTEGER (4)
 	{
-		DISPLAY_FORMAT "x";
+		DISPLAY_FORMAT "08X"; /*display sw version in hex format*/
 	}
     HANDLING READ;
 }
@@ -192,7 +192,7 @@ VARIABLE software_rev_app
     CLASS CONTAINED;
     TYPE UNSIGNED_INTEGER (4)
 	{
-		 DISPLAY_FORMAT "x";      
+		 DISPLAY_FORMAT "08X";   /*display sw version in hex format*/   
 	}
     HANDLING READ;
 
@@ -217,7 +217,7 @@ METHOD  restart
 
         id = ITEM_ID(PARAM.RESTART);
         status = select_from_menu("|en|Please select the restart type.\n", dummy, dummy, 0,
-                                   "Defaults;Run;Resource;Processor;Factory Defaults", &ivalue);/*changed sequence for menu*/
+                                   "Run;Resource;Defaults;Processor;Factory Defaults", &ivalue);/*changed sequence for menu*/
 
         switch( ivalue ) {
         case 1:
@@ -245,7 +245,7 @@ METHOD  restart
     }
 }
 
-METHOD  FD_FAIL_MAP_default
+METHOD  FD_FAIL_MAP_default /*method added for field diagnostics mapping*/
 {
     LABEL "|en|Set FD MAP to default";
 	HELP "|en|Sets FD MAP to default values";
@@ -270,61 +270,9 @@ METHOD  FD_FAIL_MAP_default
         return;
     }
 }
-/*METHOD  FD_OFFSPEC_MAP_default
+METHOD  FD_FAIL_pri_default /*method added for field diagnostics priority setting*/
 {
-    LABEL "|en|Set FD OFFSPEC MAP to default";
-	HELP "|en|Sets FD OFFSPEC MAP to default values";
-    CLASS OUTPUT;
-    DEFINITION
-    {
-       
-        long            status;             
-        unsigned long uvalue ;
 
-		uvalue=0xFFFFFFFF;
-        status=put_unsigned_value(ITEM_ID(__fd_offspec_map),0,uvalue);
-       status=send_all_values();
-        return;
-    }
-}
-METHOD  FD_MAINT_MAP_default
-{
-    LABEL "|en|Set FD MAINT MAP to default";
-	HELP "|en|Sets FD MAINT MAP to default values";
-    CLASS OUTPUT;
-    DEFINITION
-    {
-       
-        long            status;             
-        unsigned long uvalue ;
-
-		uvalue=0xFFFFFFFF;
-        status=put_unsigned_value(ITEM_ID(__fd_maint_map),0,uvalue);
-       status=send_all_values();
-        return;
-    }
-}
-METHOD  FD_CHECK_MAP_default
-{
-    LABEL "|en|Set FD CHECK MAP to default";
-	HELP "|en|Sets FD CHECK MAP to default values";
-    CLASS OUTPUT;
-    DEFINITION
-    {
-       
-        long            status;           
-        unsigned long uvalue ;
-
-		uvalue=0xFFFFFFFF;
-        status=put_unsigned_value(ITEM_ID(__fd_check_map),0,uvalue);
-       status=send_all_values();
-        return;
-    }
-}*/
-/*fd priorities set to default */
-
-METHOD  FD_FAIL_pri_default
-{
     LABEL "|en|Set FD priority to default";
 	HELP "|en|Sets FD priority to default values";
     CLASS OUTPUT;
