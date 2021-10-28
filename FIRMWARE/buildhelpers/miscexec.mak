@@ -79,7 +79,10 @@ OFFver :=T
 #  -- Do not change unless instructed by IT --
 #   Bogus builder user
 #OFFuser :=Corp\TFSBUILD
-OFFuser :=GENPITFI01\502098661
+#OFFuser :=GENPITFI01\502098661
+OFFuname:=lg098661sv
+OFFuser :=Logon\$(OFFuname)
+
 #   Password of the bogus user
 #OFFpass:=Dresser123
 OFFpass:=Sha2118d
@@ -90,7 +93,7 @@ OFFworktemplate :=rbuilder;$(OFFuser)
 #   Local builder workspace
 OFFworkspace :=rbuilder_$(USERNAME)_%COMPUTERNAME%
 #   Version control system commands
-OFFVCS:="$(ProgramFiles)\Microsoft Visual Studio 10.0\Common7\IDE\tf.exe"
+OFFVCS?="$(ProgramFiles)\Microsoft Visual Studio 10.0\Common7\IDE\tf.exe"
 OFFTester:=Khan, Rizwan
 OFFWIT:="$(ProgramFiles)\Microsoft Team Foundation Server 2010 Power Tools\tfpt.exe" workitem
 # -- End Do not change --

@@ -17,6 +17,8 @@ ifeq ($(FFP_FW_CRCID0)$(FFP_FW_VERID0),)
 SEND: send_error=$(error Unable to parse FF MNS header)
 endif
 
+OFFver?=$(buildname)
+
 FFP_MNS_OFFICIAL_BNAME=FFFP_$(OFFDir)_$(OFFver)_$(FFP_FW_VERID0)_$(FFP_FW_CRCID0)
 FFP_MNS_OFFICIAL_BNAME0=$(FFP_MNS_OFFICIAL_BNAME)_0
 
@@ -32,14 +34,24 @@ endif
 
 FFP_MNS_OFFICIAL_BNAME1=FFFP_$(OFFDir)_$(OFFver)_$(FFP_FW_VERID1)_$(FFP_FW_CRCID1)_1
 
-#What to do after FFAP modules are sync'ed: Get FFP
+ReleaseDir?=.
+
+#What to do after FFAP modules are sync'ed: Get FFP and tokenizer
+#(Added retry on get - for network errors)
 define VC_PLUGIN
     -$(MN_RM) -f -r $(SISTER_OFFroot)
     @echo Now getting FFP
-    $(OFFVCS) workfold /map "$$/$(TFSProject)/Release2/FD-SW" $(SISTER_OFFroot) /workspace:$(OFFworkspace) $(OFFlogin)
-    $(PAUSE)
+    $(OFFVCS) workfold /map "$$/$(TFSProject)/$(ReleaseDir)/FD-SW" $(SISTER_OFFroot) /workspace:$(OFFworkspace) $(OFFlogin)
+    $(OFFVCS) workfold /map "$$/$(TFSProject)/$(ReleaseDir)/FD-SW/$(TokenizerDir)" $(SISTER_OFFroot)/$(TokenizerDir) /workspace:$(OFFworkspace) $(OFFlogin)
+    $(VPAUSE)
     echo %TIME% Sync FF >> $(PROJDIR)\buildtime.log
-    $(OFFVCS) get $(SISTER_OFFroot);$(OFFver) /recursive /force $(OFFlogin)
+    $(OFFVCS) get $(SISTER_OFFroot);$(OFFver) /recursive /force $(OFFlogin) \
+	|| $(OFFVCS) get $(SISTER_OFFroot);$(OFFver) /recursive $(OFFlogin) \
+	|| $(OFFVCS) get $(SISTER_OFFroot);$(OFFver) /recursive $(OFFlogin)
+    $(OFFVCS) get $(SISTER_OFFroot)/$(TokenizerDir);$(OFFver) /recursive /force $(OFFlogin) \
+	|| $(OFFVCS) get $(SISTER_OFFroot)/$(TokenizerDir);$(OFFver) /recursive $(OFFlogin) \
+	|| $(OFFVCS) get $(SISTER_OFFroot)/$(TokenizerDir);$(OFFver) /recursive $(OFFlogin)
+    $(VPAUSE)
 endef
 
 ifeq ($(NO_MNS),1)
