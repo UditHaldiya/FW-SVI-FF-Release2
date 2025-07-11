@@ -1,0 +1,22 @@
+Thu 08/27/2015  1:11:51.23 cmdline: C:\McAfeeCMDScan\scan.exe C:\FF_Auto_Builds\FromReleasesBranch\FromRelease2\C53492\* /driver="C:\Program Files (x86)\Common Files\McAfee\Engine" /all 
+McAfee VirusScan Command Line for Win32 Version: 6.0.5.614
+Copyright (C) 2014 McAfee, Inc.
+(408) 988-3832 LICENSED COPY - December 08 2014
+
+AV Engine version: 5700.7163 for Win32.
+Dat set version: 7905 created Aug 26 2015
+Scanning for 670626 viruses, trojans and variants.
+
+C:\FF_Auto_Builds\FromReleasesBranch\FromRelease2\C53492\020101.cff            C:\FF_Auto_Builds\FromReleasesBranch\FromRelease2\C53492\0202.ff5              C:\FF_Auto_Builds\FromReleasesBranch\FromRelease2\C53492\0202.ffo              C:\FF_Auto_Builds\FromReleasesBranch\FromRelease2\C53492\0202.sy5              C:\FF_Auto_Builds\FromReleasesBranch\FromRelease2\C53492\0202.sym              C:\FF_Auto_Builds\FromReleasesBranch\FromRelease2\C53492\av.log                C:\FF_Auto_Builds\FromReleasesBranch\FromRelease2\C53492\build.log             C:\FF_Auto_Builds\FromReleasesBranch\FromRelease2\C53492\partman.ffd                                                                                          
+
+Summary Report on C:\FF_Auto_Builds\FromReleasesBranch\FromRelease2\C53492\*
+File(s)
+	Total files:...................     16
+	Clean:.........................     16
+	Not Scanned:...................     0
+	Possibly Infected:.............     0
+
+
+
+Time: 00:00.00
+

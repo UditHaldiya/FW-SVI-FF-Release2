@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HART Title="FF FFP HART Intercept Commands Definition" Version="1.0">
+	<Commands>
+		<!--Sample commands; params are ordered-->
+	</Commands>
+	<Commands>
+		<Command Name="FFP Info" CmdNum="255" AllowedModes="HC_ALLOWED_MODE_ALL" CmdFlags="HC_UNPUBLISHED_COMMAND" Description="This debug/instrumentation command is only valid for HART over FF and is intercepted in FFP to read/manipulate things in FFP">
+			<RequestParams>
+				<Param>SubCmdNum</Param>
+			</RequestParams>
+			<ResponseParams>
+				<Param>SubCmdNum</Param>
+			</ResponseParams>
+			<SubCommands>
+				<Command CmdNum="2" AllowedModes="HC_ALLOWED_MODE_ALL" CmdFlags="HC_WRITE_COMMAND" Name="Manipulate IPC traffic">
+					<RequestParams>
+						<Param>IPC_Mangle</Param>
+					</RequestParams>
+					<ResponseParams>
+						<Param>IPC_Mangle</Param>
+					</ResponseParams>
+				</Command>
+				<Command CmdNum="3" AllowedModes="HC_ALLOWED_MODE_ALL" CmdFlags="HC_READ_COMMAND" Name="Read FFP memory">
+					<RequestParams>
+						<Param>FFP Memory Selection</Param>
+						<Param>FFP Memory address</Param>
+					</RequestParams>
+					<ResponseParams>
+						<Param>FFP Memory Selection</Param>
+						<Param>FFP Memory address</Param>
+						<Param>FFP Memory Content</Param>
+					</ResponseParams>
+				</Command>
+				<Command CmdNum="4" AllowedModes="HC_ALLOWED_MODE_ALL" CmdFlags="HC_WRITE_COMMAND" Name="Write FFP memory">
+					<RequestParams>
+						<Param>FFP Memory Selection</Param>
+						<Param>FFP Memory address</Param>
+						<Param>FFP Memory Block Length</Param>
+						<Param>FFP Memory Content</Param>
+					</RequestParams>
+					<ResponseParams>
+						<Param>FFP Memory Selection</Param>
+						<Param>FFP Memory address</Param>
+						<Param>FFP Memory Block Length</Param>
+						<Param>FFP Memory Content</Param>
+					</ResponseParams>
+				</Command>
+				<Command CmdNum="5" AllowedModes="HC_ALLOWED_MODE_ALL" CmdFlags="HC_READ_COMMAND" Name="Read FFP NVMEM header" Description="FFP NVMEM is organized in blocks. This helper provides layout information about the blocks directory">
+					<RequestParams></RequestParams>
+					<ResponseParams>
+						<Param>FFP NVMEM Number Of Blocks</Param>
+						<Param>FFP NVMEM Size of Blocks</Param>
+						<Param>FFP NVMEM Blocks Base Address</Param>
+						<Param>FFP NVMEM Block Descriptor Size</Param>
+					</ResponseParams>
+				</Command>
+				<Command CmdNum="6" AllowedModes="HC_ALLOWED_MODE_ALL" CmdFlags="HC_READ_COMMAND" Name="Read FFP NVMEM blocks directory" Description="FFP NVMEM is organized in blocks. This helper provides layout information about the block requested">
+					<RequestParams>
+						<Param>FFP NVMEM Block Selector</Param>
+					</RequestParams>
+					<ResponseParams>
+						<Param>FFP NVMEM Block Selector</Param>
+						<Param>FFP NVMEM Blocks Base Address</Param>
+						<Param>FFP NVMEM Block Size</Param>
+					</ResponseParams>
+				</Command>
+				<Command CmdNum="7" AllowedModes="HC_ALLOWED_MODE_ALL" CmdFlags="HC_READ_COMMAND" Name="Read FFP NVMEM Test Statistics" Description="Selftest stats">
+					<RequestParams></RequestParams>
+					<ResponseParams>
+						<Param>FFP NVMEM Failed Block</Param>
+						<Param>FFP NVMEM Successful Repairs</Param>
+						<Param>FFP NVMEM Failed Repairs</Param>
+						<Param>FFP NVMEM max Write Time</Param>
+					</ResponseParams>
+				</Command>
+				<Command CmdNum="8" AllowedModes="HC_ALLOWED_MODE_ALL" CmdFlags="HC_COMMAND_COMMAND" Name="Test Worst EEP NVMEM Write Time" Description="Requests a test of all eep block writes">
+					<RequestParams>
+						<Param>FFP NVMEM Forget Last Result</Param>
+						<Param>FFP NVMEM Request All Writes</Param>
+					</RequestParams>
+					<ResponseParams></ResponseParams>
+				</Command>
+				<Command CmdNum="9" AllowedModes="HC_ALLOWED_MODE_ALL" CmdFlags="HC_READ_COMMAND" Name="Read FFP Active Flash Bank" Description="Read FFP Active Flash Bank">
+					<RequestParams></RequestParams>
+					<ResponseParams>
+						<Param>FFP Flash Bank</Param>
+					</ResponseParams>
+				</Command>
+				<Command CmdNum="10" AllowedModes="HC_ALLOWED_MODE_ALL" CmdFlags="HC_COMMAND_COMMAND" Name="Emulate Firmware Activation" Description="Forces activation of flash partitions (banks) on both CPUs. Assumes both banks have valid flash images.&#xA;">
+					<RequestParams>
+						<Param>Flash Partition Change Request</Param>
+					</RequestParams>
+				</Command>
+			</SubCommands>
+		</Command>
+	</Commands>
+	<Variables>
+		<Variable Name="FFP NVMEM Block Selector" DataType="H_UCHAR" Description="A block to read/write. Must be less than number of blocks"></Variable>
+		<Variable Name="FFP Memory Selection" DataType="H_UCHAR">
+			<EnumValues v0="FFP RAM " v1="FFP NVMEM"/>
+		</Variable>
+		<Variable Name="FFP NVMEM Failed Block" DataType="H_UCHAR"></Variable>
+		<Variable Name="FFP NVMEM Successful Repairs" DataType="H_UINT4"></Variable>
+		<Variable Name="FFP NVMEM Failed Repairs" DataType="H_UINT4"></Variable>
+		<Variable Name="FFP Memory address" DataType="H_UINT4" Description="RAM or NVMEM"></Variable>
+		<Variable Name="FFP Memory Block Length" DataType="H_UCHAR" Description="Actual number of bytes to write">
+			<Range MaxValue="24" MinValue="1" Model="Standard"/>
+		</Variable>
+		<Variable Name="FFP Memory Content" DataType="H_UCHAR" Description="Memory Content to read or write" MaxSize="24"></Variable>
+		<Variable Name="FFP NVMEM Number Of Blocks" DataType="H_UCHAR"></Variable>
+		<Variable Name="FFP NVMEM Size of Blocks" DataType="H_UINT4" Description="Total size of all blocks"/>
+		<Variable Name="FFP NVMEM Blocks Base Address" DataType="H_UINT4" Description="Address of blocks area"/>
+		<Variable Name="FFP NVMEM Block Size" DataType="H_UINT4" Description="Size in bytes of block data"/>
+		<Variable Name="FFP NVMEM max Write Time" DataType="H_UINT4" Units="ms" Description="Indicates the longest delay of NVMEM write operation"/>
+		<Variable Name="FFP NVMEM Header Size" DataType="H_UINT" Description="Size of info header"/>
+		<Variable Name="FFP NVMEM Block Descriptor Size" DataType="H_UINT" Description="Size of a block descriptor"/>
+		<Variable Name="FFP NVMEM Forget Last Result" DataType="H_CHAR" Description="Allows fresh measurement of worst time if non-0"/>
+		<Variable Name="FFP NVMEM Request All Writes" DataType="H_CHAR" Description="Requests all eep blocks to be written if non-0"/>
+		<Variable Name="FFP Flash Bank" DataType="H_UCHAR" Description="Active Flash Bank (0 or 1)"/>
+	</Variables>
+	<Variables>
+		<Variable Name="IPC_Mangle" DataType="H_UCHAR">
+			<EnumValues v0="Disable Periodic Traffic" v1="Enable Periodic Traffic"/>
+		</Variable>
+		<Variable Name="Flash Partition Change Request" DataType="H_UCHAR" Description="Request for both FFP and APP">
+			<EnumValues v0="Flash Partition 0" v1="Flash Partition 1" v2="Flash Flip Partition "/>
+		</Variable>
+		<OldVariable Name="FFP Last failed length" DataType="H_UCHAR"/>
+		<OldVariable Name="FFP Last failed startup_sync" DataType="H_UCHAR"/>
+		<OldVariable Name="FFP Last failed rel_idx" DataType="H_UCHAR"/>
+		<OldVariable Name="FFP Last failed subindex" DataType="H_UCHAR"/>
+		<OldVariable Name="FFP NVMEM Errors Total" DataType="H_UINT4" Description="Number of errors total" LittleEndian="1"/>
+		<OldVariable Name="FFP Block Id" DataType="H_UCHAR" Description="Softing numeric block id" LittleEndian="1">
+			<Range MaxValue="16" MinValue="0" Model="Standard"/>
+		</OldVariable>
+	</Variables>
+</HART>
