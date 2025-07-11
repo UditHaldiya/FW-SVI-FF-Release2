@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HART Version="1.0">
+  <Include></Include>
+  <Commands>
+    <SubCmdOnly CmdNum="190">
+      <SubCommands>
+        <Command Name="Data Collection" CmdNum="22" CmdType="Process" AllowedModes="HC_ALLOWED_MODE_ALL" CmdFlags="HC_PROCESS_COMMAND">
+          <RequestParams>
+            <Param>Data Collection Skip Count</Param>
+            <Param>Data Collection Bitmap</Param>
+            <Param>Data Collection Command</Param>
+            <Param>Buffer Id</Param>
+          </RequestParams>
+        </Command>
+      </SubCommands>
+    </SubCmdOnly>
+  </Commands>
+  <Variables>
+    <Variable Name="Data Collection Skip Count" DataType="H_UINT" Description="Distance between samples in multiples of cycle task periods (e.g. 105 ms)" />
+    <Variable Name="Data Collection Bitmap" DataType="H_UCHAR" Description="Bitmap (mask) of what variables are collected\n&#xD;&#xA;POSITION = bit 0\n&#xD;&#xA;MAIN PRESSURE = bit 1\n&#xD;&#xA;PILOT PRESSURE = bit 2\n&#xD;&#xA;SUPPLY PRESSURE = bit 3\n&#xD;&#xA;PRESSURE B = bit 4\n&#xD;&#xA;SETPOINT = bit 5\n&#xD;&#xA;IP CURRENT = bit 6\n&#xD;&#xA;" Printf="%02X"></Variable>
+    <Variable Name="Data Collection Command" DataType="H_UCHAR" Description="What to do with data collection process">
+      <EnumValues v0="HC_StartCollecting" v1="HC_StopCollecting" />
+    </Variable>
+  </Variables>
+  <Structs></Structs>
+</HART>
