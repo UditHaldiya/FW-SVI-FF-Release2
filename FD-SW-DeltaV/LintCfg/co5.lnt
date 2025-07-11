@@ -1,0 +1,76 @@
+//    co.lnt
+//    Compiler Options for Generic C compiler
+
+//    This file contains options to allow PC-lint to process source
+//    files for your compiler.  It is used as follows:
+//
+//    lint  co.lnt  source-file(s)
+//
+
+            // while processing compiler (library) header files ...
+-wlib(1)    // sets the warning level within library headers to 1
+	    // (no warnings, just syntax errors).  Comment out if you
+	    // are actually linting library headers.  This
+	    // option makes obsolete options of the form -elib(axxx) where
+	    // xxx >= 400 which may be retained for historical reasons.
+-elib(652)  // suppress message about #define of earlier declared symbols
+-elib(762)  // suppress message about multiple identical declarations and
+-elib(760)  // suppress message about multiple identical macro defs
+-elib(553)  // undefined pre-processor variables are regarded as
+            // 0 without complaint
+
+//  The following functions exhibit variable return modes.
+//  That is, they may equally-usefully be called for a value
+//  as called just for their effects.  Accordingly we inhibit
+//  Warning 534 for these functions.
+//  Feel free to add to or subtract from this list.
+
+-esym(534,close,creat,fclose,fprintf,fputc)
+-esym(534,fputs,fscanf,fseek,fwrite,lseek,memcpy,memmove,memset)
+-esym(534,printf,puts,scanf,sprintf,sscanf,strcat,strcpy)
+-esym(534,strncat,strncpy,unlink,write)
+
+-esym(402,__va_start1,sscanf,vsprintf)
+-esym(402,memcpy,memset,__disable_interrupt,__enable_interrupt)
+
+//------ AK: IAR-specific ----------------
++fcu		//  char is unsigned	(IAR default option)
++fzu		//  size_t is unsigned
+-d__IAR_SYSTEMS_ICC__=7
+-d__ICCARM__
+-d__STDC__=1
+-d__FLOAT_SIZE__=4
+-d__DOUBLE_SIZE__=8
+-d__LONG_DOUBLE_SIZE__=8
+-d__INT_SIZE__=4
+//more of stupid IAR hidden types
+-d__WCHAR_T_TYPE__=short
+-d__PTRDIFF_T_TYPE__=long
+-d__SIZE_T_TYPE__=unsigned
+-d__CHAR_BITS__=8
+-d__SIGNED_SHORT_MAX__=32767
+//------- AK: IAR extended keywords ------------
++rw(__arm, __thumb, __interwork)
++rw(__fiq, __irq, __monitor)
++rw(__huge, __farfunc, __nearfunc)
++rw(__no_init, __ramfunc)
++rw(__root, __swi)
+-d__intrinsic=inline //closest approximation
+
+//------ AK: patches ------------
+//-dusing=_to_brackets
+-elib(19) //useless declaration
+-elib(46) //bitfield type
+-d__VA_STACK_ALIGN__=4
+-d__VA_STACK_ALIGN_EXTRA_BEFORE__=4
+-d"__DATA_PTR_MEMORY_LIST1__()="
+-d"__HEAP_MEMORY_LIST1__()="
+-d"#pragma inline=inline"
+-d__TID__=(79<<8)
+
+-d"__INTADDR__=(size_t)"
+
+//New for 5.40
+-d"__constrange(a,b)="
+-d"__nounwind="
+-d"__noreturn="
